@@ -1,2 +1,4 @@
 .next
 node_modules
+__snapshots__
+yarn-error.log
