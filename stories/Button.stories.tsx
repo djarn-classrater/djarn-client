@@ -1,7 +1,15 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
-import Button from '~/components/Button'
 
-storiesOf('Button', module).add('with text', () => {
-  return <Button text="Click Me" />
-})
+import Button from '../components/Button'
+
+export default {
+  component: Button,
+  title: 'Button',
+  excludeStories: /.*Data$/,
+}
+
+export const defaultButton = () => {
+  return (
+    <Button text={'click'}></Button>
+  )
+}
