@@ -1,6 +1,6 @@
 import React from 'react'
 
-import StarRate from '../components/Star-rate'
+import StarRate from '../components/StarRate'
 
 export default {
   component: StarRate,
