@@ -6,10 +6,10 @@ export const Rate = () => {
   return (
     <div style={{ display: "flex" }}>
       <div style={{ textAlign: "center", flex: "1"}}>
-        <h1 style={{ marginBottom: "1px" }}>4.2</h1>
-        <p style={{ margin: "1px" }}>1000 reviewer</p>
+        <p style={{ margin: "1rem",marginBottom:"0",fontSize:"3.25rem" ,fontStyle: "normal"}}>4.2</p>
+        <p style={{ marginTop: "-1rem",color:"#747474",fontSize: "0.875rem" }}>1000 reviewer</p>
       </div>
-      <div style={{flex: "2", marginTop: "1rem"}}>
+      <div style={{flex: "2", marginTop: "2rem"}}>
         <Chart />
       </div>
     </div>
