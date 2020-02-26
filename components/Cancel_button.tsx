@@ -7,7 +7,7 @@ type Props = {
 
 export default({ButtonName}: Props) => {
     return(
-        <button className ="buttonCreate" type="button">
+        <button className ="buttonCancel" type='button'>
     {ButtonName}
   </button>
     );
