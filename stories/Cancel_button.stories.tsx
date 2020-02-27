@@ -1,5 +1,5 @@
 import React from 'react'
-import Cancel_button from '../components/Cancel_button'
+import Cancel_button from '../components/Buttons'
 
 export default {
     component: Cancel_button,
@@ -9,6 +9,6 @@ export default {
 
 export const defaultCancelButton = () => {
     return(
-        <Cancel_button ButtonName = {'Cancel'} />
+        <Cancel_button ButtonName = {'Cancel'} ButtonColor = {'white'} textColor ={'red'} />
     )
 }

@@ -2,33 +2,3 @@
 body {
   font-family: 'Prompt';
 }
-
-.buttonCreate {
-  border-radius: 20px;
-  border: none;
-  color: white;
-  background-color:rgb(102, 64, 240);
-  text-decoration: none;
-  font-style: normal;
-  width: 100%;
-  font-size: 14px;
-  padding: 12px 12px ;
-  cursor: pointer;
-}
-.buttonCreate:hover {background-color: #4d1ac5}
-
-.buttonCancel{
-  border-radius: 20px;
-  border:none;
-  color: red;
-  background-color: white;
-  font-style: normal;
-  width: 100%;
-  font-size: 14px;
-  padding: 12px 12px ;
-  cursor: pointer;
-}
-.buttonCancel:hover {
-  background-color: #ff0606;
-  color: white;
-}
