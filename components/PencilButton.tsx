@@ -10,10 +10,11 @@ export const PencilButton= () => {
                     padding:'15px',
                     width: '15px',
                     height: '15px'}}>
-            <div style={{marginTop:'-3px'}}>
+            <div style={{marginTop:'-3.5px' ,marginLeft:'-3px'}}>
             <FontAwesomeIcon 
             icon={faPencilAlt} 
             color={'#FFFFFF'} 
+            size={'lg'}
             />
             </div>
         </div>
