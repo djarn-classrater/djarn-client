@@ -15,19 +15,19 @@ export default({courseName,courseId,courseInfo,courseLo}: Props) =>{
             height: 'auto',
             wordBreak: 'break-all'
         }}>
-            <h4 style={{marginTop: '0rem'}}>{courseName}</h4>
-            <h5 style={{marginTop: '-1.5rem' ,color:'#909090'}}>{courseId}</h5>
-            <h6 style={{marginTop: '-1rem' ,marginBottom: '-0.5rem'}}>{courseInfo}</h6>
-            <div style = {{
-                marginTop: '0.5rem',
-                background: '#F4F4F4 0% 0% no-repeat padding-box',
-                color: '#6C6868',
-                padding: '10px',
-                borderRadius: '30px',
-                width: '35px',
-                height: '10px'
-            }}>
-                <h6 style={{marginTop:'-0.25rem'}}>{courseLo}</h6>
+            <p style={{fontSize:'1.5rem',margin:0}}>{courseName}</p>
+            <p style={{fontSize:'1rem',margin:0 ,color:'#909090'}}>{courseId}</p>
+            <p style={{fontSize:'0.8rem',margin:0}}>{courseInfo}</p>
+            <div style={{display:'flex'}}>
+                <div style = {{
+                    margin:'0.25rem 0rem',
+                    background: '#F4F4F4 0% 0% no-repeat padding-box',
+                    color: '#6C6868',
+                    padding: '0.5rem',
+                    borderRadius: '30px',
+                }}>
+                    <p style={{margin:0,fontSize:'0.8rem'}}>{courseLo}</p>
+                </div>
             </div>
         </div>
     ) 
