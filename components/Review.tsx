@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import StarRate, {starRate} from './StarRate'
+import StarRate from './StarRate'
 
 type Props = {
   name: string
@@ -25,7 +25,7 @@ export default ({ name, review, date, heart }: Props) => {
           <p style={{ flex: "1", margin: 0, fontSize: '0.8rem' }}>{name}</p>
           <StarRate value={3}/>
         </div>
-        <p style={{ margin: '0.25rem 0 0.75rem 0', fontWeight: 400 }}>{review}</p>
+        <p style={{ margin: '0.25rem 0 0.75rem 0', fontWeight: 300 }}>{review}</p>
         <div style={{ display: 'flex' }}>
           <p style={{
             flex: "1", 

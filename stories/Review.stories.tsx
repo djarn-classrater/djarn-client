@@ -12,7 +12,7 @@ export const defaultReview = () => {
     <>
     <Review 
     name={'Ekawit jaidee'} 
-    review={'i am studied this course i am very happy so much teacher is very nice he always teach me to understand everything on lesson'} 
+    review={'มีความสุขกับการเรียนวิชานี้มากเลยครับ อาจารย์สอนเข้าใจมาก ได้เกรดเอง่ายมากครับ'} 
     date={'14 jan 2542'} 
     heart={true}/>
     </>
