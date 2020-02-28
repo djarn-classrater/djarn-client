@@ -45,7 +45,7 @@ export const StarRate: FunctionComponent<Props> = ({
           style={style.star}
           icon={faStar} 
           color={idx < value ? '#FFDF74' : '#F2F2F2'}
-          onClick={useCallback(() => onClick(idx + 1 as RateProp)
+          onClick={onClick && useCallback(() => onClick(idx + 1 as RateProp)
           , [onClick])}
         />
       })}
