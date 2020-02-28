@@ -5,7 +5,7 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <div>
+      <div className="safe-area-view">
         <Component {...pageProps} />
       </div>
     );
