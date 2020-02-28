@@ -30,7 +30,6 @@ export default ({ name, review, date, heart }: Props) => {
           <p style={{ flex: "1", margin: 0, color: '#747474', fontSize: '0.625rem' }}>{date}</p>
           <FontAwesomeIcon style={{ flex: 'none', margin: 0, color: heart == true ? 'red' : 'lightgray' }} icon={faHeart} />
         </div>
-
       </div>
     </>
   )
