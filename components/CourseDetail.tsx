@@ -24,9 +24,9 @@ export default({courseName,courseId,courseInfo,courseLo}: Props) =>{
                     background: '#F4F4F4 0% 0% no-repeat padding-box',
                     color: '#6C6868',
                     padding: '0.5rem',
-                    borderRadius: '30px',
+                    borderRadius: '10rem',
                 }}>
-                    <p style={{margin:0,fontSize:'0.8rem'}}>{courseLo}</p>
+                    <p style={{margin:0,fontSize:'0.7rem'}}>{courseLo}</p>
                 </div>
             </div>
         </div>
