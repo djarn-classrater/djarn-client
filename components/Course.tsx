@@ -15,17 +15,20 @@ export default({courseName,courseId}: Props) =>{
             display: 'flex'
         }}>
             <div style = {{flex: '1'}}>
-                <h4 style={{marginTop: '0rem'}}>{courseId}</h4>
-                <p style={{marginTop: '-1.5rem' ,color:'#747070' ,fontSize:'0.9rem'}}>{courseName}</p>
+                <h4 style={{margin:0}}>{courseId}</h4>
+                <p style={{margin:0 ,color:'#747070' ,fontSize:'0.9rem'}}>{courseName}</p>
             </div>
-                <button style={{marginTop: '0.7rem',
-                marginBottom: '2rem',
+            <div style = {{flex: 'none',margin:'auto'}}>
+                <button type = 'button' 
+                style={{
                 borderRadius: '10px',
                 border: '#FFFFFF',
                 background: '#F2F2F2'}}>Review</button>
+            </div>
+                
 
         </div>
-        <hr style={{marginTop: '-1rem'}}></hr>
+        <hr style={{margin:0}}></hr>
         </>
     ) 
 }
