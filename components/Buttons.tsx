@@ -6,13 +6,14 @@ type Props = {
     ButtonColor: string
     textColor: string
     width: string
+    flex: string
 }
 
-export default({ButtonName , ButtonColor , textColor ,width } :Props) => {
+export default({ButtonName , ButtonColor , textColor ,width,flex } :Props) => {
     return(
         <button  type="button" 
         style = {{
-            flex: 1 ,
+            flex: `${flex}` ,
             borderRadius: '1.25rem',
             border: "none",
             color: `${textColor}`,

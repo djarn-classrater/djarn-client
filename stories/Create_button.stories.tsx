@@ -9,6 +9,7 @@ export default {
 
 export const defaultCreateButton = () => {
     return(
-        <Create_button ButtonName = {'Create a review'} ButtonColor = {'rgb(102, 64, 240)'} textColor ={'white'} width = {'100%'}/>
+        <Create_button ButtonName = {'Create a review'} ButtonColor = {'rgb(102, 64, 240)'} textColor ={'white'} width = {'100%'} flex={'none'}/>
+        
     )
 }

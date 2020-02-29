@@ -9,6 +9,6 @@ export default {
 
 export const defaultCommentsButton = () => {
     return(
-        <Comment2_button ButtonName = {'Comments'} ButtonColor = {'rgb(102, 64, 240)'} textColor ={'white'}  width ={'50%'}/>
+        <Comment2_button ButtonName = {'Comments'} ButtonColor = {'rgb(102, 64, 240)'} textColor ={'white'}  width ={'50%'} flex={'none'}/>
     )
 }

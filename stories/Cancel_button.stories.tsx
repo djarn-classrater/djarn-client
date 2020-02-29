@@ -9,6 +9,6 @@ export default {
 
 export const defaultCancelButton = () => {
     return(
-        <Cancel_button ButtonName = {'Cancel'} ButtonColor = {'white'} textColor ={'red'} width = {'100%'}/>
+        <Cancel_button ButtonName = {'Cancel'} ButtonColor = {'white'} textColor ={'red'} width = {'100%'} flex={'none'}/>
     )
 }

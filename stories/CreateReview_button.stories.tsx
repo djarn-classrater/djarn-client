@@ -9,6 +9,6 @@ export default {
 
 export const defaultCreateReviewButton = () => {
     return(
-        <CreateReview_button ButtonName = {'CREATE REVIEW'} ButtonColor = {'rgb(102, 64, 240)'} textColor ={'white'} width = {'100%'}/>
+        <CreateReview_button ButtonName = {'CREATE REVIEW'} ButtonColor = {'rgb(102, 64, 240)'} textColor ={'white'} width = {'100%'} flex={'none'}/>
     )
 }

@@ -9,6 +9,6 @@ export default {
 
 export const defaultReviewButton = () => {
     return(
-        <Review1_button ButtonName = {'Reviews'} ButtonColor = {'white'} textColor ={'grey'}  width ={'50%'}/>
+        <Review1_button ButtonName = {'Reviews'} ButtonColor = {'white'} textColor ={'grey'}  width ={'50%'} flex={'1'}/>
     )
 }
