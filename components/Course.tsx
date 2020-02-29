@@ -1,22 +1,25 @@
 import React from 'react'
+import { faAlignCenter } from '@fortawesome/free-solid-svg-icons'
 
 type Props = {
+    courseTerm?: string
     courseName: string
     courseId: string
 }
 
-export default({courseName,courseId}: Props) =>{
+export default({courseTerm,courseName,courseId}: Props) =>{
     return(
         <>
+        <div style={{padding:'0.25rem 1rem'}}>
         <div style = {{
             background: '#FFFFFF 0% 0% no-repeat padding-box',
-            padding: '0.7rem',
             height: 'auto',
             display: 'flex'
         }}>
             <div style = {{flex: '1'}}>
-                <p style={{margin:0,fontSize:'1rem',fontWeight:500}}>{courseId}</p>
-                <p style={{margin:0 ,color:'#747070' ,fontSize:'0.875rem',fontWeight:300}}>{courseName}</p>
+                <p style={{margin:0, fontSize:'0.625rem', fontWeight:300, color:'#747070'}}>{courseTerm}</p>
+                <p style={{margin:'-0.25rem 0 0 0', fontSize:'1rem', fontWeight:500}}>{courseId}</p>
+                <p style={{margin:'-0.4rem 0 0 0', fontSize:'0.875rem', fontWeight:300, color:'#747070'}}>{courseName}</p>
             </div>
             <div style = {{flex: 'none',margin:'auto'}}>
                 <button type = 'button' 
@@ -29,10 +32,9 @@ export default({courseName,courseId}: Props) =>{
                 fontWeight:300,
                 background: '#F2F2F2 0% 0% no-repeat padding-box'}}>Review</button>
             </div>
-                
-
         </div>
-        <hr style={{margin:0}}></hr>
+        <div style={{backgroundColor:"#E4E4E4", width: "100%", height: '0.1rem', margin:'0.5rem 0 0.5rem 0'}} />
+        </div>
         </>
     ) 
 }
