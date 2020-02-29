@@ -12,6 +12,7 @@ export default({ButtonName , ButtonColor , textColor ,width } :Props) => {
     return(
         <button  type="button" 
         style = {{
+            flex: 1 ,
             borderRadius: '1.25rem',
             border: "none",
             color: `${textColor}`,
@@ -19,6 +20,7 @@ export default({ButtonName , ButtonColor , textColor ,width } :Props) => {
             textDecoration: "none",
             fontStyle:" normal",
             width: `${width}`,
+            fontWeight:300,
             fontSize: "0.875rem",
             padding: "0.75rem 0.75rem" ,
             cursor: "pointer"
