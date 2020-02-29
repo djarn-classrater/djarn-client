@@ -14,7 +14,7 @@ type Styles = {
 export default ({ courseTerm, courseName, courseId, styles }: Props) => {
   return (
     <>
-      <div style={{ ...styles.contrainer }}>
+      <div style={styles && styles.contrainer}>
         <div
           style={{
             background: "#FFFFFF 0% 0% no-repeat padding-box",
