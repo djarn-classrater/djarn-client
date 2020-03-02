@@ -11,7 +11,7 @@ export const ReviewTables = () => {
     margin: '0 0.5rem',
     borderRadius: '0.625rem',
     height: 'auto',
-    boxShadow: '0 1rem 1rem #0000001A',
+    boxShadow: '0 0.375rem 1.1875rem 0.375rem #00000029',
    }}
    >
      <div style={{padding:'0 1rem'}}>
