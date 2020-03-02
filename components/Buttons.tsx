@@ -1,5 +1,5 @@
 import React from 'react'
-import  '../styles/index.css'
+
 
 type Props = {
     ButtonName: string
@@ -7,9 +7,10 @@ type Props = {
     textColor: string
     width: string
     flex: string
+    size: string
 }
 
-export default({ButtonName , ButtonColor , textColor ,width,flex } :Props) => {
+export default({ButtonName , ButtonColor , textColor ,width,flex,size } :Props) => {
     return(
         <button  type="button" 
         style = {{
@@ -22,7 +23,7 @@ export default({ButtonName , ButtonColor , textColor ,width,flex } :Props) => {
             fontStyle:" normal",
             width: `${width}`,
             fontWeight:300,
-            fontSize: "0.875rem",
+            fontSize: `${size}`,
             padding: "0.75rem 0.75rem" ,
             cursor: "pointer"
         }}
