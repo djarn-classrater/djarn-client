@@ -1,13 +1,13 @@
 import React from "react";
 
 type Props = {
-  courseName: string;
-  courseId: string;
-  courseInfo: string;
+  course_name: string;
+  course_id: string;
+  course_description: string;
   courseLo: string;
 };
 
-export default ({ courseName, courseId, courseInfo, courseLo }: Props) => {
+export default ({ course_name, course_id, course_description, courseLo }: Props) => {
   return (
     <div
       style={{
@@ -17,11 +17,11 @@ export default ({ courseName, courseId, courseInfo, courseLo }: Props) => {
         wordBreak: "break-all"
       }}
     >
-      <p style={{ fontSize: "1.5rem", margin: 0 }}>{courseName}</p>
-      <p style={{ fontSize: "1rem", margin: 0, color: "#909090" }}>
-        {courseId}
+      <p style={{ fontSize: "1.5rem", margin: 0 }}>{course_name}</p>
+      <p style={{ fontSize: "1rem", margin: '0 0 0.625rem 0', color: "#909090" }}>
+        {course_id}
       </p>
-      <p style={{ fontSize: "0.8rem", margin: 0 }}>{courseInfo}</p>
+      <p style={{ fontWeight: 300, margin: 0 }}>{course_description}</p>
       <div style={{ display: "flex" }}>
         <div
           style={{

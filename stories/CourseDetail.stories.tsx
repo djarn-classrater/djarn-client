@@ -10,9 +10,9 @@ export default {
 
 export const defaultCourseDetail = () => {
   return (
-    <CourseDetail courseName = {'Computer Engineering'} 
-    courseId = {'261000'} 
-    courseInfo = {'This course is teach about how to write a program to make maximum optimal solution.'}
+    <CourseDetail course_name = {'Computer Engineering'} 
+    course_id = {'261000'} 
+    course_description = {'This course is teach about how to write a program to make maximum optimal solution.'}
     courseLo = {'HB555'}
     />
   )

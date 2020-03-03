@@ -5,12 +5,12 @@ import StarRate from './StarRate'
 
 type Props = {
   name: string
-  review: string
+  context: string
   date: string
   heart: boolean
 }
 
-export default ({ name, review, date, heart }: Props) => {
+export default ({ name, context, date, heart }: Props) => {
   return (
     <>
       <div style={{
@@ -25,7 +25,7 @@ export default ({ name, review, date, heart }: Props) => {
           <p style={{ flex: "1", margin: 0, fontSize: '0.8rem' }}>{name}</p>
           <StarRate value={3}/>
         </div>
-        <p style={{ margin: '0.25rem 0 0.75rem 0', fontWeight: 300 }}>{review}</p>
+        <p style={{ margin: '0.25rem 0 0.75rem 0', fontWeight: 300 }}>{context}</p>
         <div style={{ display: 'flex' }}>
           <p style={{
             flex: "1", 
