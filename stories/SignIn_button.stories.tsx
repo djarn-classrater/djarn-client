@@ -1,15 +1,21 @@
-import React from 'react'
-import SignIn_button from '../components/Buttons'
+import React from "react"
+import SignInButton from "../components/SignInButton"
 
 export default {
-    component: SignIn_button,
-    title: 'SignIn_button',
-    excludestories: /.*Data$/,
+  component: SignInButton,
+  title: "Sign In Button",
+  excludestories: /.*Data$/
 }
 
 export const defaultCreateButton = () => {
-    return(
-        <SignIn_button ButtonName = {'Sign in with CMU account'} ButtonColor = {'#C1DBFF'} textColor ={'#304AAC'} width = {'100%'} flex={'none'} size = {'1.25rem'}/>
-        
-    )
+  return (
+    <SignInButton
+      ButtonName={"Sign in with CMU account"}
+      ButtonColor={"#C1DBFF"}
+      textColor={"#304AAC"}
+      width={"100%"}
+      flex={"none"}
+      size={"1.25rem"}
+    />
+  )
 }
