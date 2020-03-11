@@ -5,7 +5,7 @@ import Button from '~/components/Button'
 const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => (
   <>
     <h1>Hello world! = user agent: {userAgent}</h1>
-    <Button text="Hello world"/>
+    <Button text="Hello world" />
   </>
 )
 

@@ -9,5 +9,5 @@ export const client = new ApolloClient({
     uri: 'http://34.87.133.81:3000/graphql',
     credential: 'include',
     fetch,
-  })
+  }),
 })

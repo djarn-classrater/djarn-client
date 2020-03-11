@@ -11,12 +11,11 @@ export const defaultStarRate = () => {
   const [rate, setRate] = useState<RateProp>(3)
 
   return (
-    <StarRate 
-      value={rate} 
-      starSize={'2rem'} 
+    <StarRate
+      value={rate}
+      starSize={'2rem'}
       starMargin={'1rem'}
-      onClick={(value) => setRate(value)}
+      onClick={value => setRate(value)}
     />
   )
 }
-

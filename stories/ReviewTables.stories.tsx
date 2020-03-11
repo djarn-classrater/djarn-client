@@ -1,6 +1,6 @@
 import React from 'react'
-import { ReviewTables }  from '../components/ReviewTables'
-import  Course  from '../components/Course'
+import { ReviewTables } from '../components/ReviewTables'
+import Course from '../components/Course'
 
 export default {
   components: ReviewTables,
@@ -11,8 +11,7 @@ export default {
 export const defaultReviewTables = () => {
   return (
     <>
-    <ReviewTables/>
-
+      <ReviewTables />
     </>
   )
 }

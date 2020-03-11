@@ -1,41 +1,43 @@
-import React from "react"
+import React, { FunctionComponent } from 'react'
 
 type Props = {
-  ButtonName: string;
-  ButtonColor: string;
-  textColor: string;
-  width: string;
-  flex: string;
-  size: string;
+  ButtonName: string
+  ButtonColor: string
+  textColor: string
+  width: string
+  flex: string
+  size: string
 }
 
-export default ({
+const SignInButton: FunctionComponent<Props> = ({
   ButtonName,
   ButtonColor,
   textColor,
   width,
   flex,
-  size
-}: Props) => {
+  size,
+}) => {
   return (
     <button
       type="button"
       style={{
         flex: `${flex}`,
-        borderRadius: "1.25rem",
-        border: "none",
+        borderRadius: '1.25rem',
+        border: 'none',
         color: `${textColor}`,
         backgroundColor: `${ButtonColor}`,
-        textDecoration: "none",
-        fontStyle: " normal",
+        textDecoration: 'none',
+        fontStyle: ' normal',
         width: `${width}`,
         fontWeight: 300,
         fontSize: `${size}`,
-        padding: "0.75rem 0.75rem",
-        cursor: "pointer"
+        padding: '0.75rem 0.75rem',
+        cursor: 'pointer',
       }}
     >
       {ButtonName}
     </button>
   )
 }
+
+export default SignInButton

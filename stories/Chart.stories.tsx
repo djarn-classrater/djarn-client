@@ -2,7 +2,6 @@ import React from 'react'
 
 import { Chart } from '../components/Chart'
 
-
 export default {
   components: Chart,
   title: 'Chart',
@@ -10,7 +9,5 @@ export default {
 }
 
 export const defaultChart = () => {
-  return (
-    <Chart />
-  )
+  return <Chart />
 }

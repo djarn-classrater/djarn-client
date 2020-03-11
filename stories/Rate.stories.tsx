@@ -9,7 +9,5 @@ export default {
 }
 
 export const defaultRate = () => {
-  return (
-    <Rate />
-  )
+  return <Rate />
 }

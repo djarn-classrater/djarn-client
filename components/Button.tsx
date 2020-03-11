@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
-type Props = {
+interface Props {
   text: string
 }
 
-export default ({ text }: Props) =>(
+const Button: FunctionComponent<Props> = ({ text }) => (
   <button style={{ color: 'red' }}>{text}</button>
 )
+
+export default Button

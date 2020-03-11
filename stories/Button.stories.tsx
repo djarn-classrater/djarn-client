@@ -9,7 +9,5 @@ export default {
 }
 
 export const defaultButton = () => {
-  return (
-    <Button text={'click'}></Button>
-  )
+  return <Button text={'click'}></Button>
 }
