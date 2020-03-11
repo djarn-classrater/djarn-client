@@ -14,7 +14,10 @@ module.exports = {
       jsx: true,
     },
   },
-  rules: {},
+  rules: {
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    'react/prop-types': 0,
+  },
   settings: {
     react: {
       version: 'detect',
