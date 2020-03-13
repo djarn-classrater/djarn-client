@@ -24,7 +24,6 @@ const WriteReview: FunctionComponent<Props> = ({
         border: '#FFFFFF',
         fontFamily: 'Helvetica Neue',
         textAlign: 'left',
-        fontWeight: 'bold',
         fontSize: '1rem',
         width: '100%',
         height: `${height}`,
