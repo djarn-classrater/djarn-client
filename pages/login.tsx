@@ -23,29 +23,41 @@ const Index = () => {
   return (
     <div
       style={{
-        textAlign: 'center',
+        minHeight: '100vh',
+        alignItems: 'center',
+        display: 'flex',
       }}
     >
-      <p
+      <div
         style={{
-          margin: '12rem 5rem 10rem 5rem',
-          fontSize: '2.5rem',
-          fontWeight: 500,
-          color: '#004DC7',
+          textAlign: 'center',
+          maxWidth: '32rem',
+          margin: 'auto',
         }}
       >
-        DJARN
-      </p>
-      <Link href={cmuOAuthHref} passHref>
-        <SignInButton
-          ButtonName={'Sign in with CMU account'}
-          ButtonColor={'#C1DBFF'}
-          textColor={'#304AAC'}
-          width={'75%'}
-          flex={'none'}
-          size={'1.25rem'}
-        />
-      </Link>
+        <p
+          style={{
+            marginBottom: '7rem',
+            fontSize: '2.5rem',
+            fontWeight: 500,
+            color: '#004DC7',
+            marginTop: 0,
+          }}
+        >
+          DJARN
+        </p>
+        <Link href={cmuOAuthHref} passHref>
+          <SignInButton
+            ButtonName={'Sign in with CMU account'}
+            ButtonColor={'#C1DBFF'}
+            textColor={'#304AAC'}
+            width={'100%'}
+            flex={'none'}
+            size={'1rem'}
+            style={{ margin: '2rem', maxWidth: '20rem' }}
+          />
+        </Link>
+      </div>
     </div>
   )
 }

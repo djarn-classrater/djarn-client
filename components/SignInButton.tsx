@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, CSSProperties } from 'react'
 
 type Props = {
   href?: string
@@ -8,17 +8,22 @@ type Props = {
   width: string
   flex: string
   size: string
+  style?: CSSProperties
 }
 
 const SignInButton = forwardRef<HTMLAnchorElement, Props>(
-  ({ href, ButtonName, ButtonColor, textColor, width, flex, size }, ref) => {
+  (
+    { href, ButtonName, ButtonColor, textColor, width, flex, size, style },
+    ref,
+  ) => {
     return (
       <a
         ref={ref}
         href={href}
         style={{
+          ...style,
           flex: `${flex}`,
-          borderRadius: '1.25rem',
+          borderRadius: '1.625rem',
           border: 'none',
           color: `${textColor}`,
           backgroundColor: `${ButtonColor}`,
@@ -27,7 +32,7 @@ const SignInButton = forwardRef<HTMLAnchorElement, Props>(
           width: `${width}`,
           fontWeight: 300,
           fontSize: `${size}`,
-          padding: '0.75rem 0.75rem',
+          padding: '0.75rem 1.75rem',
           cursor: 'pointer',
         }}
       >
