@@ -7,7 +7,7 @@ export const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
     uri: 'http://34.87.133.81:3000/graphql',
-    credentials: 'include',
+    // credentials: 'include',
     fetch,
   }),
 })
