@@ -36,7 +36,7 @@ const Index = () => {
       >
         DJARN
       </p>
-      <Link href={cmuOAuthHref}>
+      <Link href={cmuOAuthHref} passHref>
         <SignInButton
           ButtonName={'Sign in with CMU account'}
           ButtonColor={'#C1DBFF'}
