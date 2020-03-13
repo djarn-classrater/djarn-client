@@ -4,18 +4,12 @@ import React, { FunctionComponent } from 'react'
 
 type Props = {
   text: string
-  top: string
-  left: string
-  width: string
   height: string
   background: string
   textcolor: string
 }
 const WriteReview: FunctionComponent<Props> = ({
   text,
-  top,
-  left,
-  width,
   height,
   textcolor,
   background,
@@ -25,8 +19,6 @@ const WriteReview: FunctionComponent<Props> = ({
       placeholder={text}
       style={{
         margin: 'auto',
-        // top: `${top}`,
-        // left: `${left}`,
         color: `${textcolor}`,
         fontWeight: 300,
         border: '#FFFFFF',
