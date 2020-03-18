@@ -1,10 +1,12 @@
 import React, { CSSProperties, FunctionComponent } from 'react'
+import Skeleton from 'react-loading-skeleton'
 
 type Props = {
   courseTerm?: string
   courseName: string
   courseId: string
   styles?: Styles
+  loading?: boolean
 }
 
 type Styles = {
@@ -16,6 +18,7 @@ const Course: FunctionComponent<Props> = ({
   courseName,
   courseId,
   styles,
+  loading,
 }) => {
   return (
     <>
@@ -36,7 +39,7 @@ const Course: FunctionComponent<Props> = ({
                 color: '#747070',
               }}
             >
-              {courseTerm}
+              {loading ? <Skeleton width={'4rem'} /> : courseTerm}
             </p>
             <p
               style={{
@@ -45,7 +48,7 @@ const Course: FunctionComponent<Props> = ({
                 fontWeight: 500,
               }}
             >
-              {courseId}
+              {loading ? <Skeleton width={'6rem'} /> : courseId}
             </p>
             <p
               style={{
@@ -55,24 +58,28 @@ const Course: FunctionComponent<Props> = ({
                 color: '#747070',
               }}
             >
-              {courseName}
+              {loading ? <Skeleton width={'13rem'} /> : courseName}
             </p>
           </div>
           <div style={{ flex: 'none', margin: 'auto' }}>
-            <button
-              type="button"
-              style={{
-                padding: '0.35rem 0.75rem',
-                borderRadius: '10rem',
-                margin: 'auto',
-                border: '#FFFFFF',
-                fontSize: '0.75rem',
-                fontWeight: 300,
-                background: '#F2F2F2 0% 0% no-repeat padding-box',
-              }}
-            >
-              Review
-            </button>
+            {loading ? (
+              <Skeleton width={'4rem'} height={'1.5rem'} />
+            ) : (
+              <button
+                type="button"
+                style={{
+                  padding: '0.35rem 0.75rem',
+                  borderRadius: '10rem',
+                  margin: 'auto',
+                  border: '#FFFFFF',
+                  fontSize: '0.75rem',
+                  fontWeight: 300,
+                  background: '#F2F2F2 0% 0% no-repeat padding-box',
+                }}
+              >
+                Review
+              </button>
+            )}
           </div>
         </div>
         <div
