@@ -1,8 +1,9 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import StarRate from './StarRate'
 import Skeleton from 'react-loading-skeleton'
+import { isTypeSubTypeOf } from 'graphql'
 
 type Props = {
   name?: string
@@ -10,6 +11,7 @@ type Props = {
   date?: string
   heart?: boolean
   loading?: boolean
+  style?: CSSProperties
 }
 
 const Review: FunctionComponent<Props> = ({
@@ -18,6 +20,7 @@ const Review: FunctionComponent<Props> = ({
   date,
   heart,
   loading,
+  style,
 }) => {
   return (
     <>
@@ -29,6 +32,7 @@ const Review: FunctionComponent<Props> = ({
           height: 'auto',
           boxShadow: '0px 10px 25px #0000001A',
           wordBreak: 'break-all', //make long word new line
+          ...style,
         }}
       >
         <div style={{ display: 'flex' }}>

@@ -3,6 +3,7 @@ import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
 import { useRouter } from 'next/router'
 
+import Layout from '../components/Layout'
 import CourseDetail from '../components/CourseDetail'
 import { Rate } from '../components/Rate'
 import { StarRate } from '../components/StarRate'
@@ -34,39 +35,48 @@ const Course = () => {
     variables: router.query,
   })
 
-  if (loading) return <p>Loading...</p>
+  if (loading)
+    return (
+      <Layout>
+        <CourseDetail loading />
+        <Rate loading />
+        <Review style={{ margin: '0 4px 1rem 4px' }} loading />
+        <Review style={{ margin: '0 4px 1rem 4px' }} loading />
+        <Review style={{ margin: '0 4px 1rem 4px' }} loading />
+        <Review style={{ margin: '0 4px 1rem 4px' }} loading />
+        <Review style={{ margin: '0 4px 1rem 4px' }} loading />
+      </Layout>
+    )
   if (error) return <p>{error.message}</p>
 
   const { course } = data
-  console.log(course)
 
   return (
-    <div style={{ maxWidth: '32rem', margin: 'auto' }}>
+    <Layout>
       <CourseDetail {...course} courseLo="HB555" />
       <div style={{ margin: '11.2px' }}>
-        <h3 style={{ margin: '0' }}>Rate & Review </h3>
-        <Rate />
+        <Rate rate={'4.2'} reviewer={'1000'} />
         <p style={{ textAlign: 'center', margin: '0.5rem' }}>Tap to rate</p>
         <StarRate
           value={4}
           starSize="2.5rem"
           starMargin="1rem"
           styleContainer={{
-            textAlign: 'center',
+            justifyContent: 'center',
             marginBottom: '1.5rem',
           }}
         />
       </div>
       {course.reviews.length != 0 ? (
         course.reviews.map((review, idx) => (
-          <div key={idx} style={{ margin: '0 4px 1rem 4px' }}>
-            <Review
-              name={'Ekawit jaidee'}
-              context={review.context}
-              date={review.date}
-              heart={true}
-            />
-          </div>
+          <Review
+            key={idx}
+            style={{ margin: '0 4px 1rem 4px' }}
+            name={'Ekawit jaidee'}
+            context={review.context}
+            date={review.date}
+            heart={true}
+          />
         ))
       ) : (
         <p
@@ -78,7 +88,7 @@ const Course = () => {
           No review
         </p>
       )}
-    </div>
+    </Layout>
   )
 }
 
