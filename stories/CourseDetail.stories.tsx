@@ -20,3 +20,7 @@ export const defaultCourseDetail = () => {
     />
   )
 }
+
+export const defaultLoadCourseDetail = () => {
+  return <CourseDetail loading />
+}
