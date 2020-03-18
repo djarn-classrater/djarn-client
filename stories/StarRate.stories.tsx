@@ -19,3 +19,7 @@ export const defaultStarRate = () => {
     />
   )
 }
+
+export const defaultLoadStarrate = () => {
+  return <StarRate loading />
+}

@@ -1,6 +1,7 @@
 import React, { FunctionComponent, CSSProperties, useCallback } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import Skeleton from 'react-loading-skeleton'
 
 export type RateProp = 0 | 1 | 2 | 3 | 4 | 5
 
@@ -10,14 +11,16 @@ interface Props {
   starMargin?: string | number
   styleContainer?: CSSProperties
   onClick?: (value: RateProp) => void
+  loading?: boolean
 }
 
 export const StarRate: FunctionComponent<Props> = ({
   value,
-  starSize,
-  starMargin,
+  starSize = '1rem',
+  starMargin = '0.25rem',
   styleContainer,
   onClick,
+  loading,
 }) => {
   value = value || 0
 
@@ -25,6 +28,7 @@ export const StarRate: FunctionComponent<Props> = ({
     container: {
       ...styleContainer,
       marginLeft: `-${starMargin}`,
+      display: 'flex',
     },
     star: {
       width: starSize,
@@ -38,7 +42,11 @@ export const StarRate: FunctionComponent<Props> = ({
       {Array(5)
         .fill(null)
         .map((_, idx: RateProp) => {
-          return (
+          return loading ? (
+            <div style={style.star}>
+              <Skeleton key={idx} width={starSize} height={starSize} circle />
+            </div>
+          ) : (
             <FontAwesomeIcon
               key={idx}
               style={style.star}

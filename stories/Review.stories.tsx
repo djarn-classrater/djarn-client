@@ -21,3 +21,11 @@ export const defaultReview = () => {
     </>
   )
 }
+
+export const loadingReview = () => {
+  return (
+    <>
+      <Review loading />
+    </>
+  )
+}
