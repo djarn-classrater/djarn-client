@@ -2,10 +2,10 @@ import React, { FunctionComponent } from 'react'
 import Skeleton from 'react-loading-skeleton'
 
 type Props = {
-  courseName: string
-  courseId: string
-  courseDescription: string
-  courseLo: string
+  courseName?: string
+  courseId?: string
+  courseDescription?: string
+  courseLo?: string
   loading?: boolean
 }
 
@@ -31,7 +31,7 @@ const CourseDetail: FunctionComponent<Props> = ({
       <p
         style={{ fontSize: '1rem', margin: '0 0 0.625rem 0', color: '#909090' }}
       >
-        {loading ? <Skeleton width={'10rem'} /> : courseId}
+        {loading ? <Skeleton width={'5rem'} /> : courseId}
       </p>
       <p style={{ fontWeight: 300, margin: 0 }}>
         {loading ? <Skeleton count={3} /> : courseDescription}
