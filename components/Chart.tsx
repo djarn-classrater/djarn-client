@@ -1,47 +1,74 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
+import Skeleton from 'react-loading-skeleton'
 
-export const Chart = () => {
+type Props = {
+  loading?: boolean
+}
+
+type BarChartProps = {
+  loading?: boolean
+  color?: string
+  widthbarload?: string
+  bar?: string
+}
+
+const BarChart: FunctionComponent<BarChartProps> = ({
+  loading,
+  color,
+  widthbarload,
+  bar,
+}) => {
   return (
-    <div>
-      <div
-        style={{
-          backgroundColor: '#8BC7A4',
-          width: '100%',
-          height: '0.5rem',
-          margin: '0.25rem',
-        }}
+    <div
+      style={{
+        width: bar,
+        height: '0.5rem',
+        margin: '0.25rem',
+      }}
+    >
+      {loading ? (
+        <div style={{ position: 'absolute', marginTop: '-0.25rem' }}>
+          <Skeleton width={widthbarload} height={'0.5rem'} />
+        </div>
+      ) : (
+        <div style={{ backgroundColor: color, height: '100%' }} />
+      )}
+    </div>
+  )
+}
+
+export const Chart: FunctionComponent<Props> = ({ loading }) => {
+  return (
+    <div style={{ position: 'relative' }}>
+      <BarChart
+        bar={'100%'}
+        color={'#8BC7A4'}
+        widthbarload={'14rem'}
+        loading={loading}
       />
-      <div
-        style={{
-          backgroundColor: '#B7D690',
-          width: '50%',
-          height: '0.5rem',
-          margin: '0.25rem',
-        }}
+      <BarChart
+        bar={'70%'}
+        color={'#B7D690'}
+        widthbarload={'10rem'}
+        loading={loading}
       />
-      <div
-        style={{
-          backgroundColor: '#F9D959',
-          width: '30%',
-          height: '0.5rem',
-          margin: '0.25rem',
-        }}
+      <BarChart
+        bar={'20%'}
+        color={'#F9D959'}
+        widthbarload={'5rem'}
+        loading={loading}
       />
-      <div
-        style={{
-          backgroundColor: '#F4B451',
-          width: '10%',
-          height: '0.5rem',
-          margin: '0.25rem',
-        }}
+      <BarChart
+        bar={'30%'}
+        color={'#F4B451'}
+        widthbarload={'6rem'}
+        loading={loading}
       />
-      <div
-        style={{
-          backgroundColor: '#F09165',
-          width: '20%',
-          height: '0.5rem',
-          margin: '0.25rem',
-        }}
+      <BarChart
+        bar={'50%'}
+        color={'#F09165'}
+        widthbarload={'9rem'}
+        loading={loading}
       />
     </div>
   )
