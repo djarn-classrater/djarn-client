@@ -40,17 +40,19 @@ const CourseDetail: FunctionComponent<Props> = ({
         {loading ? (
           <Skeleton width={'4rem'} height={'1.5rem'} />
         ) : (
-          <div
-            style={{
-              margin: '0.625rem 0 0 0',
-              background: '#F4F4F4 0% 0% no-repeat padding-box',
-              color: '#6C6868',
-              padding: '0.25rem 0.75rem',
-              borderRadius: '10rem',
-            }}
-          >
-            <p style={{ margin: 0, fontSize: '0.7rem' }}>{courseLo}</p>
-          </div>
+          courseLo && (
+            <div
+              style={{
+                margin: '0.625rem 0 0 0',
+                background: '#F4F4F4 0% 0% no-repeat padding-box',
+                color: '#6C6868',
+                padding: '0.25rem 0.75rem',
+                borderRadius: '10rem',
+              }}
+            >
+              <p style={{ margin: 0, fontSize: '0.7rem' }}>{courseLo}</p>
+            </div>
+          )
         )}
       </div>
     </div>

@@ -12,6 +12,7 @@ export const CreatButton = () => {
         borderRadius: '25rem',
         width: '100%',
         fontWeight: 300,
+        marginBottom: '1rem',
       }}
     >
       Create a review
