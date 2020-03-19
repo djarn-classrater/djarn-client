@@ -8,12 +8,5 @@ export default {
 }
 
 export const defaultReview = () => {
-  return (
-    <Review
-      text={'Write a review'}
-      height={'18.25rem'}
-      background={'#F8F8F8 0% 0% no-repeat padding-box'}
-      textcolor={'#909090'}
-    />
-  )
+  return <Review height={'18.25rem'} />
 }
