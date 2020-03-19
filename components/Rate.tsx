@@ -5,11 +5,17 @@ import Skeleton from 'react-loading-skeleton'
 
 type Prop = {
   loading?: boolean
-  rate?: string
+  mean?: string
   reviewer?: string
+  rating?: object
 }
 
-export const Rate: FunctionComponent<Prop> = ({ loading, rate, reviewer }) => {
+export const Rate: FunctionComponent<Prop> = ({
+  loading,
+  mean,
+  reviewer,
+  rating,
+}) => {
   return (
     <>
       {loading ? (
@@ -30,7 +36,7 @@ export const Rate: FunctionComponent<Prop> = ({ loading, rate, reviewer }) => {
             {loading ? (
               <Skeleton circle width={'3rem'} height={'3rem'} />
             ) : (
-              rate
+              mean
             )}
           </p>
           <p
@@ -40,11 +46,11 @@ export const Rate: FunctionComponent<Prop> = ({ loading, rate, reviewer }) => {
               fontSize: '0.875rem',
             }}
           >
-            {loading ? <Skeleton width={'6rem'} /> : reviewer + ' reviewer'}
+            {loading ? <Skeleton width={'6rem'} /> : reviewer + ' reviewers'}
           </p>
         </div>
         <div style={{ flex: '2', marginTop: '2rem' }}>
-          <Chart loading={loading} />
+          <Chart loading={loading} rating={rating} />
         </div>
       </div>
     </>

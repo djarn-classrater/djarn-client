@@ -24,6 +24,18 @@ const COURSE = gql`
         context
         date
       }
+
+      ratingSummary {
+        mean
+        reviewer
+        rating {
+          _1
+          _2
+          _3
+          _4
+          _5
+        }
+      }
     }
   }
 `
@@ -55,7 +67,7 @@ const Course = () => {
     <Layout>
       <CourseDetail {...course} courseLo="HB555" />
       <div style={{ margin: '11.2px' }}>
-        <Rate rate={'4.2'} reviewer={'1000'} />
+        <Rate {...course.ratingSummary} />
         <p style={{ textAlign: 'center', margin: '0.5rem' }}>Tap to rate</p>
         <StarRate
           value={4}
