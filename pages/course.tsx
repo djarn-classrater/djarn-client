@@ -9,6 +9,8 @@ import { Rate } from '../components/Rate'
 import { StarRate } from '../components/StarRate'
 import Review from '../components/Review'
 
+import { CourseType } from '~/generated/graphql'
+
 const COURSE = gql`
   query getCourse($courseId: String!) {
     course(courseId: $courseId) {
@@ -43,7 +45,7 @@ const COURSE = gql`
 const Course = () => {
   const router = useRouter()
 
-  const { loading, error, data } = useQuery(COURSE, {
+  const { loading, error, data } = useQuery<{ course: CourseType }>(COURSE, {
     variables: router.query,
   })
 

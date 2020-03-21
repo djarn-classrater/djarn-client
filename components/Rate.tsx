@@ -3,14 +3,13 @@ import React, { FunctionComponent } from 'react'
 import { Chart } from './Chart'
 import Skeleton from 'react-loading-skeleton'
 
-type Prop = {
+import { RateSummary } from '~/generated/graphql'
+
+interface Props extends RateSummary {
   loading?: boolean
-  mean?: string
-  reviewer?: string
-  rating?: object
 }
 
-export const Rate: FunctionComponent<Prop> = ({
+export const Rate: FunctionComponent<Props> = ({
   loading,
   mean,
   reviewer,

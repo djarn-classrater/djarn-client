@@ -1,9 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import Skeleton from 'react-loading-skeleton'
 
-type Props = {
+import { Rating } from '~/generated/graphql'
+
+interface Props {
   loading?: boolean
-  rating?: object
+  rating: Rating
 }
 
 type BarChartProps = {
@@ -44,40 +46,42 @@ const BarChart: FunctionComponent<BarChartProps> = ({
 }
 
 export const Chart: FunctionComponent<Props> = ({ loading, rating }) => {
-  const maxScore = Object.keys(rating).reduce<number>((prev, current) => {
-    return rating[current] > prev ? rating[current] : prev
-  }, 0)
+  const maxScore =
+    !loading &&
+    Object.keys(rating).reduce<number>((prev, current) => {
+      return rating[current] > prev ? rating[current] : prev
+    }, 0)
 
   return (
     <div style={{ position: 'relative' }}>
       <BarChart
         maxScore={maxScore}
-        score={rating['_5']}
+        score={rating && rating['_5']}
         color={'#8BC7A4'}
         loading={loading}
       />
       <BarChart
         maxScore={maxScore}
-        score={rating['_4']}
+        score={rating && rating['_4']}
         color={'#B7D690'}
         loading={loading}
       />
       <BarChart
         maxScore={maxScore}
-        score={rating['_3']}
+        score={rating && rating['_3']}
         color={'#F9D959'}
         // widthbarload={'10rem'}
         loading={loading}
       />
       <BarChart
         maxScore={maxScore}
-        score={rating['_2']}
+        score={rating && rating['_2']}
         color={'#F4B451'}
         loading={loading}
       />
       <BarChart
         maxScore={maxScore}
-        score={rating['_2']}
+        score={rating && rating['_2']}
         color={'#F09165'}
         loading={loading}
       />
