@@ -18,6 +18,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     'react/prop-types': 0,
   },
+  ignorePatterns: ['generated/', 'node_modules/'],
   settings: {
     react: {
       version: 'detect',
