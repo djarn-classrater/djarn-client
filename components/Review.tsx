@@ -3,25 +3,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import StarRate from './StarRate'
 import Skeleton from 'react-loading-skeleton'
-import { isTypeSubTypeOf } from 'graphql'
+import { ReviewType } from '~/generated/graphql'
 
-type Props = {
+interface Props {
   name?: string
-  context?: string
-  date?: string
   heart?: boolean
   loading?: boolean
   style?: CSSProperties
+  data?: ReviewType
 }
 
 const Review: FunctionComponent<Props> = ({
   name,
-  context,
-  date,
   heart,
   loading,
   style,
+  data = { context: null, date: null },
 }) => {
+  const { context, date, rate } = data
+
   return (
     <>
       <div
@@ -42,7 +42,7 @@ const Review: FunctionComponent<Props> = ({
           <StarRate
             starSize={'1rem'}
             starMargin={'0.25rem'}
-            value={3}
+            value={rate}
             loading={loading}
           />
         </div>

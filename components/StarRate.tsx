@@ -6,11 +6,11 @@ import Skeleton from 'react-loading-skeleton'
 export type RateProp = 0 | 1 | 2 | 3 | 4 | 5
 
 interface Props {
-  value?: RateProp
+  value?: RateProp | number
   starSize?: string | number
   starMargin?: string | number
   styleContainer?: CSSProperties
-  onClick?: (value: RateProp) => void
+  onClick?: (value: RateProp | number) => void
   loading?: boolean
 }
 

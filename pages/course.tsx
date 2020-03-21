@@ -6,9 +6,8 @@ import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
 import CourseDetail from '../components/CourseDetail'
 import { Rate } from '../components/Rate'
-import { StarRate } from '../components/StarRate'
+import StarRate from '../components/StarRate'
 import Review from '../components/Review'
-
 import { CourseType } from '~/generated/graphql'
 
 const COURSE = gql`
@@ -25,6 +24,7 @@ const COURSE = gql`
         courseId
         context
         date
+        rate
       }
 
       ratingSummary {
@@ -87,8 +87,7 @@ const Course = () => {
             key={idx}
             style={{ margin: '0 4px 1rem 4px' }}
             name={'Ekawit jaidee'}
-            context={review.context}
-            date={review.date}
+            data={review}
             heart={true}
           />
         ))
