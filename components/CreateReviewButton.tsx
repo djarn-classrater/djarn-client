@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
-export const CreatButton = () => {
+type Props = React.ButtonHTMLAttributes<HTMLButtonElement>
+
+export const CreateButton: FunctionComponent<Props> = ({ ...props }) => {
   return (
     <button
+      {...props}
       style={{
         backgroundColor: '#3B6FFF',
         border: 'none',
@@ -20,4 +23,4 @@ export const CreatButton = () => {
   )
 }
 
-export default CreatButton
+export default CreateButton

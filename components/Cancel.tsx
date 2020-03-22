@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Cencel = () => {
+export const Cancel = () => {
   return (
     <div style={{ textAlign: 'center' }}>
       <a style={{ color: '#F03939' }}>cancel</a>
@@ -8,4 +8,4 @@ export const Cencel = () => {
   )
 }
 
-export default Cencel
+export default Cancel
