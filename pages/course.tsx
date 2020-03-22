@@ -72,13 +72,14 @@ const Course = () => {
         <Rate {...course.ratingSummary} />
         <p style={{ textAlign: 'center', margin: '0.5rem' }}>Tap to rate</p>
         <StarRate
-          value={4}
+          intialRate={3}
           starSize="2.5rem"
           starMargin="1rem"
           styleContainer={{
             justifyContent: 'center',
             marginBottom: '1.5rem',
           }}
+          readonly
         />
       </div>
       {course.reviews.length != 0 ? (
