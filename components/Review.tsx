@@ -1,7 +1,7 @@
 import React, { FunctionComponent, CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import StarRate from './StarRate'
+import StarRate, { Rate } from './StarRate'
 import Skeleton from 'react-loading-skeleton'
 import { ReviewType } from '~/generated/graphql'
 
@@ -42,8 +42,9 @@ const Review: FunctionComponent<Props> = ({
           <StarRate
             starSize={'1rem'}
             starMargin={'0.25rem'}
-            value={rate}
+            intialRate={rate as Rate}
             loading={loading}
+            readonly
           />
         </div>
         <p style={{ margin: '0.25rem 0 0.75rem 0', fontWeight: 300 }}>
