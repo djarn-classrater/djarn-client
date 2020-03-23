@@ -54,7 +54,7 @@ const Index = () => {
             width={'100%'}
             flex={'none'}
             size={'1rem'}
-            style={{ margin: '2rem', maxWidth: '20rem' }}
+            style={{ maxWidth: '20rem' }}
           />
         </Link>
       </div>
