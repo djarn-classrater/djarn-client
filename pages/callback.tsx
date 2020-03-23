@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import React, { useEffect } from 'react'
 import { NextPage, GetServerSideProps } from 'next'
-import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
 import Axios from 'axios'
-// import { useQuery } from '@apollo/react-hooks'
 import cookie from '~/api/cookie'
 
 type CMUOAuthResponse = {
+  host: string
   access_token: string
   refresh_token: string
   expire_in: string
@@ -16,19 +16,20 @@ const Callback: NextPage<CMUOAuthResponse> = ({
   access_token,
   refresh_token,
 }) => {
-  const router = useRouter()
-
   useEffect(() => {
-    /**
-     * Save access and refresh token to local storage.
-     */
-    cookie.set('token', access_token)
-    cookie.set('refresh', refresh_token)
+    ;(async () => {
+      /**
+       * Save access and refresh token to local storage.
+       */
+      cookie.set('token', access_token)
+      cookie.set('refresh', refresh_token)
 
-    /**
-     * Redirect for check authorization
-     */
-    router.push('/me')
+      /**
+       * Reload and redirect for check authorization
+       */
+      const { origin } = window.location
+      window.location.assign(`${origin}/me`)
+    })()
   }, [])
 
   return null
@@ -52,7 +53,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async ({ query }) => {
     },
   )
 
-  return { props: data }
+  return { props: { ...data } }
 }
 
-export default Callback
+export default dynamic(async () => Callback, { ssr: false })
