@@ -4,8 +4,11 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 export const Search = () => {
   return(
-     <div style={{borderRadius: "20px", backgroundColor: "#F4F4F4"}}>
-      <FontAwesomeIcon icon={faSearch} />  
+     <div style={{border: 'solid'}}>
+       <form >
+         <input placeholder="Search" style={{border: 'none'}} />
+         <FontAwesomeIcon icon={faSearch} style={{}} />
+       </form>
      </div> 
   )
 }
