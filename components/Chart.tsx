@@ -23,7 +23,7 @@ const BarChart: FunctionComponent<BarChartProps> = ({
   maxScore,
   score,
 }) => {
-  const barWidth = `${(score / maxScore) * 97 + 3}%`
+  const barWidth = `${(score / maxScore) * 97 || 0 + 3}%`
   return (
     <div
       style={{

@@ -20,14 +20,14 @@ export const Rate: FunctionComponent<Props> = ({
       {loading ? (
         <Skeleton width={'9rem'} height={'1.25rem'} />
       ) : (
-        <h3 style={{ margin: '0' }}>Rate & Review </h3>
+        <h3 style={{ margin: '0', fontWeight: 400 }}>Rate & Review </h3>
       )}
       <div style={{ display: 'flex' }}>
-        <div style={{ textAlign: 'center', flex: '1' }}>
+        <div style={{ textAlign: 'center', flex: 'none' }}>
           <p
             style={{
-              margin: '1rem',
-              marginBottom: '0',
+              minWidth: '5.625rem',
+              margin: '0 1rem 0 0.5rem',
               fontSize: '3.25rem',
               fontStyle: 'normal',
             }}
@@ -35,7 +35,7 @@ export const Rate: FunctionComponent<Props> = ({
             {loading ? (
               <Skeleton circle width={'3rem'} height={'3rem'} />
             ) : (
-              mean
+              (mean && mean.toFixed(2)) || 0
             )}
           </p>
           <p
@@ -48,7 +48,7 @@ export const Rate: FunctionComponent<Props> = ({
             {loading ? <Skeleton width={'6rem'} /> : reviewer + ' reviewers'}
           </p>
         </div>
-        <div style={{ flex: '2', marginTop: '2rem' }}>
+        <div style={{ flex: '2', marginTop: '1rem' }}>
           <Chart loading={loading} rating={rating} />
         </div>
       </div>
