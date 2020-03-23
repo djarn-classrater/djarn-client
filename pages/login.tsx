@@ -37,6 +37,7 @@ const Index = () => {
       >
         <p
           style={{
+            letterSpacing: '0.5rem',
             marginBottom: '7rem',
             fontSize: '2.5rem',
             fontWeight: 500,
