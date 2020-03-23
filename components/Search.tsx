@@ -9,46 +9,45 @@ const Search = forwardRef<
   return (
     <div style={{ display: 'flex' }}>
       <h1 style={{ flex: 'none', margin: 0, color: '#114EF5' }}>D</h1>
-      <div style={{ flex: 1 }}>
-        <div
-          style={{
-            margin: '0.375rem',
-            display: 'flex',
-            borderRadius: '20px',
-            borderStyle: 'solid',
-            borderWidth: '1px',
-            borderColor: '#F0F0F0',
-          }}
-        >
-          <div style={{ flex: 1 }}>
-            <input
-              {...props}
-              ref={ref}
-              type="text"
-              placeholder="Search"
-              style={{
-                borderRadius: '20px',
-                height: '2rem',
-                textIndent: '1rem',
-                width: '100%',
-                border: 'none',
-              }}
-            />
-          </div>
-          <div style={{ flex: 'none' }}>
+      <div style={{ flex: 1, padding: '0.375rem' }}>
+        <p style={{ display: 'block', position: 'relative', margin: 0 }}>
+          <input
+            {...props}
+            ref={ref}
+            type="text"
+            placeholder="Search"
+            style={{
+              borderRadius: '20px',
+              height: '2rem',
+              textIndent: '1rem',
+              width: '100%',
+              border: '1px solid #E4E4E4',
+              position: 'relative',
+            }}
+          />
+          <span
+            style={{
+              alignItems: 'center',
+              display: 'inline-flex',
+              right: 0,
+              position: 'absolute',
+              zIndex: 4,
+              width: '2rem',
+              top: 0,
+              fontSize: 'inherit',
+              height: '2rem',
+            }}
+          >
             <FontAwesomeIcon
               icon={faSearch}
               style={{
-                paddingTop: '0.625rem',
-                paddingRight: '1rem',
-                textAlign: 'center',
+                display: 'inline-block',
+                boxSizing: 'inherit',
                 color: '#6C6868',
-                width: '1rem',
-                height: '1rem',
               }}
             />
-          </div>
-        </div>
+          </span>
+        </p>
       </div>
     </div>
   )
