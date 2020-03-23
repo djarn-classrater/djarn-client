@@ -17,19 +17,17 @@ const Callback: NextPage<CMUOAuthResponse> = ({
   refresh_token,
 }) => {
   useEffect(() => {
-    ;(async () => {
-      /**
-       * Save access and refresh token to local storage.
-       */
-      cookie.set('token', access_token)
-      cookie.set('refresh', refresh_token)
+    /**
+     * Save access and refresh token to local storage.
+     */
+    cookie.set('token', access_token)
+    cookie.set('refresh', refresh_token)
 
-      /**
-       * Reload and redirect for check authorization
-       */
-      const { origin } = window.location
-      window.location.assign(`${origin}/me`)
-    })()
+    /**
+     * Reload and redirect for check authorization
+     */
+    const { origin } = window.location
+    window.location.assign(`${origin}/me`)
   }, [])
 
   return null
