@@ -33,7 +33,12 @@ const CourseDetail: FunctionComponent<Props> = ({
       >
         {loading ? <Skeleton width={'5rem'} /> : courseId}
       </p>
-      <p style={{ fontWeight: 300, margin: 0 }}>
+      <p
+        style={{
+          fontWeight: 300,
+          margin: 0,
+        }}
+      >
         {loading ? <Skeleton count={3} /> : courseDescription}
       </p>
       <div style={{ display: 'flex' }}>
