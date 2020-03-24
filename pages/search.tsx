@@ -5,13 +5,24 @@ import Layout from '../components/Layout'
 import Search from '../components/Search'
 import { gql } from 'apollo-boost'
 import { useLazyQuery } from '@apollo/react-hooks'
-import { CourseType } from '~/generated/graphql'
+import { Query } from 'react-apollo'
+import { CourseType, UserType } from '~/generated/graphql'
 
 const GET_COURSE = gql`
   query getCourse($courseId: String!) {
     course(courseId: $courseId) {
       courseId
       courseName
+    }
+  }
+`
+
+const STUDENT_INFO = gql`
+  query getStudentInfo {
+    me {
+      firstNameTH
+      lastNameTH
+      organizationNameTH
     }
   }
 `
@@ -54,6 +65,20 @@ const SearchResult: FunctionComponent<Partial<CourseType>> = ({
   )
 }
 
+const UserInfo = () => {
+  return (
+    <Query<{ me: UserType }> query={STUDENT_INFO}>
+      {({ loading, error, data }) => {
+        if (loading) return <p>Loading...</p>
+        if (error) return <p>{error.message}</p>
+
+        const { me } = data
+        return <p>{`${me.firstNameTH} ${me.lastNameTH}`}</p>
+      }}
+    </Query>
+  )
+}
+
 const SearchBar = () => {
   const [getCourse, { loading, error, data }] = useLazyQuery<{
     course: CourseType
@@ -79,6 +104,7 @@ const SearchBar = () => {
           data && <SearchResult {...data.course} />
         )}
       </div>
+      <div>{!loading && !error && !data && <UserInfo />}</div>
     </Layout>
   )
 }

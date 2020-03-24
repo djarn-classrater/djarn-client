@@ -16,6 +16,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   starSize?: string | number
   starMargin?: string | number
   styleContainer?: CSSProperties
+  onClick?(value): void
   loading?: boolean
   readonly?: boolean
 }
@@ -29,6 +30,7 @@ export const StarRate = forwardRef<HTMLInputElement, Props>(
       styleContainer,
       loading,
       readonly,
+      onClick,
       ...props
     },
     ref,
@@ -42,6 +44,7 @@ export const StarRate = forwardRef<HTMLInputElement, Props>(
     const onClickCallback = useCallback(
       (rate: Rate) => {
         !readonly && setRate(rate)
+        onClick && onClick(rate as number)
       },
       [rate],
     )

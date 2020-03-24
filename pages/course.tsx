@@ -8,7 +8,7 @@ import CourseDetail from '../components/CourseDetail'
 import { Rate } from '../components/Rate'
 import StarRate from '../components/StarRate'
 import Review from '../components/Review'
-import { CourseType } from '~/generated/graphql'
+import { CourseType, UserType } from '~/generated/graphql'
 
 const COURSE = gql`
   query getCourse($courseId: String!) {
@@ -43,13 +43,22 @@ const COURSE = gql`
         }
       }
     }
+
+    me {
+      reviews(courseId: $courseId) {
+        id
+      }
+    }
   }
 `
 
 const Course = () => {
   const router = useRouter()
 
-  const { loading, error, data } = useQuery<{ course: CourseType }>(COURSE, {
+  const { loading, error, data } = useQuery<{
+    course: CourseType
+    me: UserType
+  }>(COURSE, {
     variables: router.query,
   })
 
@@ -67,24 +76,36 @@ const Course = () => {
     )
   if (error) return <p>{error.message}</p>
 
-  const { course } = data
+  const { course, me } = data
 
   return (
     <Layout>
       <CourseDetail {...course} courseLo="HB555" />
       <div style={{ margin: '11.2px' }}>
         <Rate {...course.ratingSummary} />
-        <p style={{ textAlign: 'center', margin: '0.5rem' }}>Tap to rate</p>
-        <StarRate
-          intialRate={3}
-          starSize="2.5rem"
-          starMargin="1rem"
-          styleContainer={{
-            justifyContent: 'center',
-            marginBottom: '1.5rem',
-          }}
-          readonly
-        />
+        {!me.reviews[0] && (
+          <>
+            <p style={{ textAlign: 'center', margin: '0.5rem' }}>Tap to rate</p>
+            <StarRate
+              intialRate={0}
+              starSize="2.5rem"
+              starMargin="1rem"
+              onClick={rate => {
+                router.push({
+                  pathname: '/reviews/create',
+                  query: {
+                    courseId: router.query.courseId,
+                    rate,
+                  },
+                })
+              }}
+              styleContainer={{
+                justifyContent: 'center',
+                marginBottom: '1.5rem',
+              }}
+            />
+          </>
+        )}
       </div>
       {course.reviews.length != 0 ? (
         course.reviews.map((review, idx) => (
