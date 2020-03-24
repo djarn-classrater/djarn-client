@@ -13,3 +13,7 @@ body {
 #__next p {
   word-break: break-word;
 }
+
+*:focus {
+  outline: none;
+}
