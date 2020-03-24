@@ -9,7 +9,7 @@ export default {
 }
 
 export const defaultRate = () => {
-  return <Rate rate={'4.2'} reviewer={'1000'} />
+  return <Rate mean={4.2} reviewer={1000} />
 }
 export const defaultLoadRate = () => {
   return <Rate loading />

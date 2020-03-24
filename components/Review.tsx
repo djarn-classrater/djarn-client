@@ -10,7 +10,7 @@ interface Props {
   heart?: boolean
   loading?: boolean
   style?: CSSProperties
-  data?: ReviewType
+  data?: Partial<ReviewType>
 }
 
 const Review: FunctionComponent<Props> = ({

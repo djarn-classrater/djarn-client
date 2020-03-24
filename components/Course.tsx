@@ -3,8 +3,8 @@ import Skeleton from 'react-loading-skeleton'
 
 type Props = {
   courseTerm?: string
-  courseName: string
-  courseId: string
+  courseName?: string
+  courseId?: string
   styles?: Styles
   loading?: boolean
 }

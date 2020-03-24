@@ -11,9 +11,9 @@ export default {
 export const defaultCourseDetail = () => {
   return (
     <CourseDetail
-      course_name={'Computer Engineering'}
-      course_id={'261000'}
-      course_description={
+      courseName={'Computer Engineering'}
+      courseId={'261000'}
+      courseDescription={
         'This course is teach about how to write a program to make maximum optimal solution.'
       }
       courseLo={'HB555'}

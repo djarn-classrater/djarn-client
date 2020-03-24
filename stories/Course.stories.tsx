@@ -24,8 +24,18 @@ export const defaultCourse = () => {
 export const defaultLoadingCourse = () => {
   return (
     <>
-      <Course loading />
-      <Course loading />
+      <Course
+        courseTerm={'2/2562'}
+        courseName={'Computer Engineering'}
+        courseId={'261000'}
+        loading
+      />
+      <Course
+        courseTerm={'2/2562'}
+        courseName={'Computer Engineering'}
+        courseId={'261000'}
+        loading
+      />
     </>
   )
 }
