@@ -1,8 +1,8 @@
 import App from 'next/app'
-import Head from 'next/head'
 import React from 'react'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { client } from '~/api/apollo'
+import 'normalize.css'
 import '~/styles/index.css'
 
 class MyApp extends App {
