@@ -10,12 +10,6 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
     return (
       <ApolloProvider client={client}>
-        <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-          />
-        </Head>
         <div className="safe-area-view">
           <Component {...pageProps} />
         </div>
