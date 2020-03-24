@@ -37,7 +37,7 @@ const Review: FunctionComponent<Props> = ({
       >
         <div style={{ display: 'flex' }}>
           <p style={{ flex: '1', margin: 0, fontSize: '0.8rem' }}>
-            {loading ? <Skeleton width={'8rem'} /> : name}
+            {loading ? <Skeleton width={'8rem'} /> : name || 'Anonymous'}
           </p>
           <StarRate
             starSize={'1rem'}

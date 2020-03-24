@@ -25,6 +25,10 @@ const COURSE = gql`
         context
         date
         rate
+        user {
+          firstNameTH
+          lastNameTH
+        }
       }
 
       ratingSummary {
@@ -87,7 +91,10 @@ const Course = () => {
           <Review
             key={idx}
             style={{ margin: '0 4px 1rem 4px' }}
-            name={'Ekawit jaidee'}
+            name={
+              review.user &&
+              `${review.user.firstNameTH} ${review.user.lastNameTH}`
+            }
             data={review}
             heart={true}
           />
