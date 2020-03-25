@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, useState } from 'react'
+import React, { FC, forwardRef, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -6,13 +6,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 const Contrainer = styled.div`
   display: flex;
   margin-bottom: 1rem;
-`
-
-const Logo = styled.h1`
-  flex: none;
-  margin: 0 0.25rem;
-  color: #114ef5;
-  align-self: center;
 `
 
 const SearchContrainer = styled.div`
@@ -28,7 +21,7 @@ const SearchInput = styled.input`
   float: right;
   border: 2px solid #f5f5f5;
   position: relative;
-  transition: width 0.15s ease-in-out;
+  transition: width 0.15s ease-out;
 
   width: ${(props: { active: boolean }) => (props.active ? '100%' : '2.25rem')};
 `
@@ -51,6 +44,28 @@ const Icon = styled(FontAwesomeIcon)`
   color: #6c6868;
 `
 
+const LogoContainer = styled.div`
+  display: flex;
+`
+
+const LogoText = styled.h1<{ hidden?: boolean }>`
+  flex: none;
+  margin: 0 0.25rem;
+  color: #114ef5;
+  align-self: center;
+  transition: opacity 0.15s east-out;
+  opacity: ${({ hidden }) => (hidden ? 0 : 100)};
+`
+
+const Logo: FC<{ searchActive: boolean }> = ({ searchActive }) => {
+  return (
+    <LogoContainer>
+      <LogoText>D</LogoText>
+      <LogoText hidden={searchActive}>JARN</LogoText>
+    </LogoContainer>
+  )
+}
+
 const Search = forwardRef<
   HTMLInputElement,
   React.InputHTMLAttributes<HTMLInputElement>
@@ -62,7 +77,7 @@ const Search = forwardRef<
 
   return (
     <Contrainer>
-      <Logo>D</Logo>
+      <Logo searchActive={active} />
       <SearchContrainer>
         <SearchInput
           {...props}
