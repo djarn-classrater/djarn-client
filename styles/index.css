@@ -12,6 +12,7 @@ body {
 
 #__next p {
   word-break: break-word;
+  line-height: normal;
 }
 
 *:focus {
