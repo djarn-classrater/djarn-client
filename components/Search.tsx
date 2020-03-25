@@ -14,7 +14,7 @@ const SearchContrainer = styled.div`
   position: relative;
 `
 
-const SearchInput = styled.input`
+const SearchInput = styled.input<{ active: boolean }>`
   border-radius: 1.25rem;
   height: 2rem;
   text-indent: 1rem;
@@ -23,7 +23,7 @@ const SearchInput = styled.input`
   position: relative;
   transition: width 0.15s ease-out;
 
-  width: ${(props: { active: boolean }) => (props.active ? '100%' : '2.25rem')};
+  width: ${({ active }) => (active ? '100%' : '2.25rem')};
 `
 
 const SearchSpan = styled.a`
