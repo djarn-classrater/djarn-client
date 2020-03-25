@@ -1,13 +1,16 @@
 import React, { FunctionComponent } from 'react'
-
 import { Chart } from './Chart'
 import Skeleton from 'react-loading-skeleton'
-
+import styled from 'styled-components'
 import { RateSummary } from '~/generated/graphql'
 
 interface Props extends RateSummary {
   loading?: boolean
 }
+
+const Container = styled.div`
+  margin-bottom: 0.625rem;
+`
 
 export const Rate: FunctionComponent<Props> = ({
   loading,
@@ -16,7 +19,7 @@ export const Rate: FunctionComponent<Props> = ({
   rating,
 }) => {
   return (
-    <>
+    <Container>
       {loading ? (
         <Skeleton width={'9rem'} height={'1.25rem'} />
       ) : (
@@ -52,6 +55,6 @@ export const Rate: FunctionComponent<Props> = ({
           <Chart loading={loading} rating={rating} />
         </div>
       </div>
-    </>
+    </Container>
   )
 }

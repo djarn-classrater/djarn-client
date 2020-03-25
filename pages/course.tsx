@@ -81,37 +81,35 @@ const Course = () => {
   return (
     <Layout>
       <CourseDetail {...course} courseLo="HB555" />
-      <div style={{ margin: '11.2px' }}>
-        <Rate {...course.ratingSummary} />
-        {!me.reviews[0] && (
-          <>
-            <p style={{ textAlign: 'center', margin: '0.5rem' }}>Tap to rate</p>
-            <StarRate
-              intialRate={0}
-              starSize="2.5rem"
-              starMargin="1rem"
-              onClick={rate => {
-                router.push({
-                  pathname: '/reviews/create',
-                  query: {
-                    courseId: router.query.courseId,
-                    rate,
-                  },
-                })
-              }}
-              styleContainer={{
-                justifyContent: 'center',
-                marginBottom: '1.5rem',
-              }}
-            />
-          </>
-        )}
-      </div>
+      <Rate {...course.ratingSummary} />
+      {!me.reviews[0] && (
+        <>
+          <p style={{ textAlign: 'center', margin: '0.5rem' }}>Tap to rate</p>
+          <StarRate
+            intialRate={0}
+            starSize="2.5rem"
+            starMargin="1rem"
+            onClick={rate => {
+              router.push({
+                pathname: '/reviews/create',
+                query: {
+                  courseId: router.query.courseId,
+                  rate,
+                },
+              })
+            }}
+            styleContainer={{
+              justifyContent: 'center',
+              marginBottom: '1.5rem',
+            }}
+          />
+        </>
+      )}
       {course.reviews.length != 0 ? (
         course.reviews.map((review, idx) => (
           <Review
             key={idx}
-            style={{ margin: '0 4px 1rem 4px' }}
+            style={{ margin: '0 -0.5rem 1rem -0.5rem' }}
             name={
               review.user &&
               `${review.user.firstNameTH} ${review.user.lastNameTH}`

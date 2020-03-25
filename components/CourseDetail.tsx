@@ -20,7 +20,7 @@ const CourseDetail: FunctionComponent<Props> = ({
     <div
       style={{
         background: '#FFFFFF 0% 0% no-repeat padding-box',
-        padding: '0.7rem',
+        marginBottom: '1.625rem',
         height: 'auto',
         wordBreak: 'break-all',
       }}

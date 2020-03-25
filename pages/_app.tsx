@@ -7,7 +7,7 @@ import 'normalize.css'
 import '~/styles/index.css'
 
 const Container = styled.div`
-  padding: 1rem;
+  padding: 1.25rem;
 `
 
 class MyApp extends App {
