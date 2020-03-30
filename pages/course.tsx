@@ -7,8 +7,8 @@ import Layout from '../components/Layout'
 import CourseDetail from '../components/CourseDetail'
 import { Rate } from '../components/Rate'
 import StarRate from '../components/StarRate'
-import Review from '../components/Review'
 import { CourseType, UserType } from '~/generated/graphql'
+import ReviewList from '~/components/ReviewList'
 
 const COURSE = gql`
   query getCourse($courseId: String!) {
@@ -55,34 +55,24 @@ const COURSE = gql`
 const Course = () => {
   const router = useRouter()
 
-  const { loading, error, data } = useQuery<{
+  const { data, ...state } = useQuery<{
     course: CourseType
     me: UserType
   }>(COURSE, {
     variables: router.query,
   })
 
-  if (loading)
-    return (
-      <Layout>
-        <CourseDetail loading />
-        <Rate loading />
-        <Review style={{ margin: '0 4px 1rem 4px' }} loading />
-        <Review style={{ margin: '0 4px 1rem 4px' }} loading />
-        <Review style={{ margin: '0 4px 1rem 4px' }} loading />
-        <Review style={{ margin: '0 4px 1rem 4px' }} loading />
-        <Review style={{ margin: '0 4px 1rem 4px' }} loading />
-      </Layout>
-    )
-  if (error) return <p>{error.message}</p>
-
-  const { course, me } = data
+  const { course, me } = data || { course: null, me: null }
+  const { ratingSummary, reviews } = course || {
+    ratingSummary: null,
+    reviews: null,
+  }
 
   return (
     <Layout>
-      <CourseDetail {...course} courseLo="HB555" />
-      <Rate {...course.ratingSummary} />
-      {!me.reviews[0] && (
+      <CourseDetail {...state} {...course} courseLo="HB555" />
+      <Rate {...state} {...ratingSummary} />
+      {!state.loading && !me.reviews[0] && (
         <>
           <p style={{ textAlign: 'center', margin: '0.5rem' }}>Tap to rate</p>
           <StarRate
@@ -105,29 +95,7 @@ const Course = () => {
           />
         </>
       )}
-      {course.reviews.length != 0 ? (
-        course.reviews.map((review, idx) => (
-          <Review
-            key={idx}
-            style={{ margin: '0 -0.5rem 1rem -0.5rem' }}
-            name={
-              review.user &&
-              `${review.user.firstNameTH} ${review.user.lastNameTH}`
-            }
-            data={review}
-            heart={true}
-          />
-        ))
-      ) : (
-        <p
-          style={{
-            color: 'rgb(116, 116, 116)',
-            textAlign: 'center',
-          }}
-        >
-          No review
-        </p>
-      )}
+      <ReviewList {...state} reviews={reviews} />
     </Layout>
   )
 }

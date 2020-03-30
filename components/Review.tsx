@@ -18,7 +18,7 @@ const Review: FunctionComponent<Props> = ({
   heart,
   loading,
   style,
-  data = { context: null, date: null },
+  data = { context: null, date: null, rate: 0 },
 }) => {
   const { context, date, rate } = data
 
