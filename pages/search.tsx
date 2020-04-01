@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
@@ -58,6 +58,16 @@ const UserArea = styled.div`
   padding: 0 1rem;
   color: #747070;
 `
+const WarningArea = styled.div`
+  background-color: #faecbd;
+  border-left: 1rem solid #eda214;
+`
+const TextWarning = styled.p`
+  padding: 1rem;
+  margin: 0;
+  color: #eda214;
+  font-size: 0.75rem;
+`
 
 const SearchResult: FunctionComponent<Partial<CourseType>> = ({
   courseId,
@@ -94,11 +104,21 @@ const UserInfo = () => {
   )
 }
 
+const Warning = () => {
+  return (
+    <WarningArea>
+      <TextWarning>
+        กำลังใช้ระบบแบบ Beta
+        ซึ่งทำให้ผู้ใช้สามารถค้นหากระบวนวิชาโดยใช้รหัสวิชาเท่านั้น
+      </TextWarning>
+    </WarningArea>
+  )
+}
 const SearchBar = () => {
   const [getCourse, { loading, error, data }] = useLazyQuery<{
     course: CourseType
   }>(GET_COURSE)
-
+  const [searchActive, setSearchActive] = useState()
   return (
     <Layout>
       <Search
@@ -109,17 +129,32 @@ const SearchBar = () => {
             },
           })
         }
+        onCancelClick={() => {
+          setSearchActive(false)
+          if (data) data.course = null
+        }}
+        onSearchClick={() => {
+          setSearchActive(true)
+        }}
       />
       <div>
-        {loading ? (
-          <p>loading...</p>
-        ) : error ? (
-          error.message
+        {searchActive ? (
+          <>
+            {loading ? (
+              <div>
+                <p>loading...</p>
+              </div>
+            ) : error ? (
+              error.message
+            ) : (
+              data && <SearchResult {...data.course} />
+            )}
+            <Warning />
+          </>
         ) : (
-          data && <SearchResult {...data.course} />
+          <UserInfo />
         )}
       </div>
-      <div>{!loading && !error && !data && <UserInfo />}</div>
     </Layout>
   )
 }

@@ -1,4 +1,4 @@
-import React, { FC, forwardRef, useRef, useState } from 'react'
+import React, { FC, forwardRef, useRef, useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -69,49 +69,55 @@ const Logo: FC<{ searchActive: boolean }> = ({ searchActive }) => {
   )
 }
 
-const Search = forwardRef<
-  HTMLInputElement,
-  React.InputHTMLAttributes<HTMLInputElement>
->((props, ref) => {
-  const [active, setActive] = useState<boolean>(false)
-  const inputRef = useRef<HTMLInputElement>()
-  // Bypass ref
-  ref = inputRef
+interface SearchProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  onCancelClick?(): void
+  onSearchClick?(): void
+}
 
-  return (
-    <Contrainer>
-      <Logo searchActive={active} />
-      <SearchContrainer>
-        <SearchInput
-          {...props}
-          ref={inputRef}
-          type="text"
-          width={'2.25rem'}
-          active={active}
-        />
-        {active ? (
-          <SearchSpan
-            onClick={() => {
-              inputRef.current.value = ''
-              setActive(false)
-            }}
-          >
-            <Icon icon={faTimes} />
-          </SearchSpan>
-        ) : (
-          <SearchSpan
-            onClick={() => {
-              inputRef.current.focus()
-              setActive(true)
-            }}
-          >
-            <Icon icon={faSearch} />
-          </SearchSpan>
-        )}
-      </SearchContrainer>
-    </Contrainer>
-  )
-})
+const Search = forwardRef<HTMLInputElement, SearchProps>(
+  ({ onCancelClick, onSearchClick, ...props }, ref) => {
+    const [active, setActive] = useState<boolean>(false)
+    const inputRef = useRef<HTMLInputElement>()
+    // Bypass ref
+    ref = inputRef
+
+    return (
+      <Contrainer>
+        <Logo searchActive={active} />
+        <SearchContrainer>
+          <SearchInput
+            {...props}
+            ref={inputRef}
+            type="text"
+            width={'2.25rem'}
+            active={active}
+          />
+          {active ? (
+            <SearchSpan
+              onClick={() => {
+                inputRef.current.value = ''
+                setActive(false)
+                onCancelClick && onCancelClick()
+              }}
+            >
+              <Icon icon={faTimes} />
+            </SearchSpan>
+          ) : (
+            <SearchSpan
+              onClick={() => {
+                inputRef.current.focus()
+                setActive(true)
+                onSearchClick && onSearchClick()
+              }}
+            >
+              <Icon icon={faSearch} />
+            </SearchSpan>
+          )}
+        </SearchContrainer>
+      </Contrainer>
+    )
+  },
+)
 
 Search.displayName = 'Search'
 
