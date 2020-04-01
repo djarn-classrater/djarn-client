@@ -16,15 +16,17 @@ const SearchContrainer = styled.div`
 `
 
 const SearchInput = styled.input<{ active: boolean }>`
-  border-radius: 1.25rem;
-  height: 2rem;
+  height: 2.5rem;
   text-indent: 1rem;
   float: right;
-  border: 2px solid #f5f5f5;
+  box-shadow: inset 0 0.0625em 0.125em #ffffff;
+  border-radius: 1.25rem;
+  border: 2px solid transparent;
+  border-color: #f5f5f5;
   position: relative;
   transition: width 0.15s ease-out;
 
-  width: ${({ active }) => (active ? '100%' : '2.25rem')};
+  width: ${({ active }) => (active ? '100%' : '2.5rem')};
 `
 
 const SearchSpan = styled.a`
