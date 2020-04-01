@@ -131,7 +131,6 @@ const SearchBar = () => {
         }
         onCancelClick={() => {
           setSearchActive(false)
-          if (data) data.course = null
         }}
         onSearchClick={() => {
           setSearchActive(true)
