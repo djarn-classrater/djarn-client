@@ -2,6 +2,7 @@ import React, { FC, forwardRef, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const Contrainer = styled.div`
   display: flex;
@@ -81,22 +82,30 @@ const Search = forwardRef<
       <SearchContrainer>
         <SearchInput
           {...props}
-          onBlur={e => {
-            setActive(!!e.target.value)
-          }}
           ref={inputRef}
           type="text"
           width={'2.25rem'}
           active={active}
         />
-        <SearchSpan
-          onClick={() => {
-            inputRef.current.focus()
-            setActive(true)
-          }}
-        >
-          <Icon icon={faSearch} />
-        </SearchSpan>
+        {active ? (
+          <SearchSpan
+            onClick={() => {
+              inputRef.current.value = ''
+              setActive(false)
+            }}
+          >
+            <Icon icon={faTimes} />
+          </SearchSpan>
+        ) : (
+          <SearchSpan
+            onClick={() => {
+              inputRef.current.focus()
+              setActive(true)
+            }}
+          >
+            <Icon icon={faSearch} />
+          </SearchSpan>
+        )}
       </SearchContrainer>
     </Contrainer>
   )
