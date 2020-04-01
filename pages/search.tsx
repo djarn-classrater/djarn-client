@@ -48,6 +48,16 @@ const Text = styled.p`
   margin: 0;
   padding: 1rem 0;
 `
+const User = styled.p`
+  padding: 0;
+  margin: 0;
+`
+const UserArea = styled.div`
+  margin: 2rem 1rem;
+  border-left: 0.125rem solid;
+  padding: 0 1rem;
+  color: #747070;
+`
 
 const SearchResult: FunctionComponent<Partial<CourseType>> = ({
   courseId,
@@ -73,7 +83,12 @@ const UserInfo = () => {
         if (error) return <p>{error.message}</p>
 
         const { me } = data
-        return <p>{`${me.firstNameTH} ${me.lastNameTH}`}</p>
+        return (
+          <UserArea>
+            <User>{`${me.firstNameTH} ${me.lastNameTH}`}</User>
+            <User>{`${me.organizationNameTH}`}</User>
+          </UserArea>
+        )
       }}
     </Query>
   )
