@@ -68,7 +68,13 @@ const TextWarning = styled.p`
   color: #eda214;
   font-size: 0.75rem;
 `
+const Texts = styled.p`
+  color: #9d9797;
+`
 
+const TextArea = styled.div`
+  text-align: center;
+`
 const SearchResult: FunctionComponent<Partial<CourseType>> = ({
   courseId,
   courseName,
@@ -140,11 +146,13 @@ const SearchBar = () => {
         {searchActive ? (
           <>
             {loading ? (
-              <div>
-                <p>loading...</p>
-              </div>
+              <TextArea>
+                <Texts>loading...</Texts>
+              </TextArea>
             ) : error ? (
-              error.message
+              <TextArea>
+                <Texts>Not Found</Texts>
+              </TextArea>
             ) : (
               data && <SearchResult {...data.course} />
             )}
