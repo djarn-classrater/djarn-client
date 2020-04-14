@@ -25,6 +25,7 @@ const COURSE = gql`
         context
         date
         rate
+        like
         user {
           firstNameTH
           lastNameTH

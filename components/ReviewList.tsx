@@ -29,7 +29,7 @@ const ReviewList: FunctionComponent<Props> = ({ loading, reviews }) => {
               review.user &&
               `${review.user.firstNameTH} ${review.user.lastNameTH}`
             }
-            heart={true}
+            heart={review.like}
             data={review}
           />
         ))
