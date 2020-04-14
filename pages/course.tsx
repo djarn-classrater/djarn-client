@@ -20,6 +20,7 @@ const COURSE = gql`
       courseDescription
 
       reviews {
+        id
         studentId
         courseId
         context
