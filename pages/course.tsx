@@ -19,7 +19,7 @@ const COURSE = gql`
       courseCredit
       courseDescription
 
-      reviews {
+      reviews(includeMe: false) {
         id
         studentId
         courseId
@@ -49,6 +49,15 @@ const COURSE = gql`
     me {
       reviews(courseId: $courseId) {
         id
+        studentId
+        context
+        date
+        rate
+        like
+        user {
+          firstNameTH
+          lastNameTH
+        }
       }
     }
   }
@@ -74,29 +83,41 @@ const Course = () => {
     <Layout>
       <CourseDetail {...state} {...course} courseLo="HB555" />
       <Rate {...state} {...ratingSummary} />
-      {!state.loading && !me.reviews[0] && (
-        <>
-          <p style={{ textAlign: 'center', margin: '0.5rem' }}>Tap to rate</p>
-          <StarRate
-            intialRate={0}
-            starSize="2.5rem"
-            starMargin="1rem"
-            onClick={rate => {
-              router.push({
-                pathname: '/reviews/create',
-                query: {
-                  courseId: router.query.courseId,
-                  rate,
-                },
-              })
-            }}
-            styleContainer={{
-              justifyContent: 'center',
-              marginBottom: '1.5rem',
-            }}
-          />
-        </>
-      )}
+      {!state.loading &&
+        (me.reviews[0] ? (
+          <>
+            <p>Your review</p>
+            <ReviewList {...state} {...me} />
+            <hr
+              style={{
+                border: '0.0625rem solid #EAEAEA',
+                marginBottom: '1rem',
+              }}
+            />
+          </>
+        ) : (
+          <>
+            <p style={{ textAlign: 'center', margin: '0.5rem' }}>Tap to rate</p>
+            <StarRate
+              intialRate={0}
+              starSize="2.5rem"
+              starMargin="1rem"
+              onClick={rate => {
+                router.push({
+                  pathname: '/reviews/create',
+                  query: {
+                    courseId: router.query.courseId,
+                    rate,
+                  },
+                })
+              }}
+              styleContainer={{
+                justifyContent: 'center',
+                marginBottom: '1.5rem',
+              }}
+            />
+          </>
+        ))}
       <ReviewList {...state} reviews={reviews} />
     </Layout>
   )
