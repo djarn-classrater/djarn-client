@@ -1,5 +1,6 @@
 import React, { FunctionComponent, CSSProperties, forwardRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import styled from 'styled-components'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import StarRate, { Rate } from './StarRate'
 import Skeleton from 'react-loading-skeleton'
@@ -13,6 +14,18 @@ interface Props {
   data?: Partial<ReviewType>
   onLikeClick?(payload: Partial<ReviewType>): void
 }
+
+// Clickable size of like button
+const LikeContainer = styled.div`
+  padding: 2rem;
+  margin: -2rem;
+`
+
+const Like = styled(FontAwesomeIcon)<{ heart: boolean }>`
+  flex: none;
+  margin: 0;
+  color: ${({ heart }) => (heart ? '#DE8686' : 'lightgray')};
+`
 
 const Review = forwardRef<HTMLInputElement, Props>(
   ({
@@ -67,17 +80,9 @@ const Review = forwardRef<HTMLInputElement, Props>(
             {loading ? (
               <Skeleton circle width={'1rem'} height={'1rem'} />
             ) : (
-              <FontAwesomeIcon
-                style={{
-                  flex: 'none',
-                  margin: 0,
-                  color: heart == true ? '#DE8686' : 'lightgray',
-                }}
-                icon={faHeart}
-                onClick={() => {
-                  onLikeClick && onLikeClick(data)
-                }}
-              />
+              <LikeContainer onClick={() => onLikeClick && onLikeClick(data)}>
+                <Like heart={heart} icon={faHeart} />
+              </LikeContainer>
             )}
           </div>
         </div>
