@@ -4,6 +4,7 @@ import { gql } from 'apollo-boost'
 import Review from './Review'
 import {
   ReviewType,
+  Mutation,
   MutationCreateLikeArgs,
   MutationDeleteLikeArgs,
 } from '~/generated/graphql'
@@ -13,7 +14,6 @@ const LIKE = gql`
     id
     review {
       id
-      like
     }
   }
 `
@@ -36,23 +36,20 @@ const DELETE_LIKE = gql`
   ${LIKE}
 `
 
-const GET_REVIEW = gql`
-  query reviews($studentId: String!, $courseId: String!) {
-    reviews(studentId: $studentId, courseId: $courseId) {
-      id
-      like
-    }
-  }
-`
-
 interface Props {
   reviews?: Array<ReviewType>
   loading?: boolean
 }
 
 const ReviewList: FunctionComponent<Props> = ({ loading, reviews }) => {
-  const [createLike] = useMutation<any, MutationCreateLikeArgs>(CREATE_LIKE)
-  const [deleteLike] = useMutation<any, MutationDeleteLikeArgs>(DELETE_LIKE)
+  const [createLike] = useMutation<
+    { createLike: Mutation['createLike'] },
+    MutationCreateLikeArgs
+  >(CREATE_LIKE)
+  const [deleteLike] = useMutation<
+    { deleteLike: Mutation['createLike'] },
+    MutationDeleteLikeArgs
+  >(DELETE_LIKE)
 
   if (loading)
     return (
@@ -70,21 +67,36 @@ const ReviewList: FunctionComponent<Props> = ({ loading, reviews }) => {
       {reviews.length !== 0 ? (
         reviews.map((review, idx) => (
           <Review
-            onLikeClick={async ({ id, like, studentId, courseId }) => {
+            onLikeClick={async ({ id, like }) => {
               if (!like) {
                 await createLike({
                   variables: { reviewId: id },
+                  update: (proxy, { data }) => {
+                    const { review } = data.createLike
+                    proxy.writeData<Partial<ReviewType>>({
+                      id: `ReviewType:${review.id}`,
+                      data: {
+                        __typename: 'ReviewType',
+                        id: review.id,
+                        like: true,
+                      },
+                    })
+                  },
                 })
               } else {
                 await deleteLike({
                   variables: { reviewId: id },
-                  // fix delete response in server
-                  refetchQueries: [
-                    {
-                      query: GET_REVIEW,
-                      variables: { studentId, courseId },
-                    },
-                  ],
+                  update: (proxy, { data }) => {
+                    const { review } = data.deleteLike
+                    proxy.writeData<Partial<ReviewType>>({
+                      id: `ReviewType:${review.id}`,
+                      data: {
+                        __typename: 'ReviewType',
+                        id: review.id,
+                        like: false,
+                      },
+                    })
+                  },
                 })
               }
             }}
