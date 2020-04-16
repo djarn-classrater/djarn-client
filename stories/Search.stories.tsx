@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Search } from '../components/Search'
+import Search from '../components/Search'
 
 export default {
   component: Search,
@@ -9,7 +9,5 @@ export default {
 }
 
 export const defaultSearch = () => {
-  return(
-    <Search />
-  )
+  return <Search />
 }
