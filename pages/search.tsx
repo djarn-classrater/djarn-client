@@ -28,6 +28,7 @@ const STUDENT_INFO = gql`
 `
 
 const SearchResultContainer = styled.div`
+  margin-bottom: 1rem;
   border-radius: 16px;
   padding: 0 2rem;
   transition: background-color 0.15s ease-in-out;
