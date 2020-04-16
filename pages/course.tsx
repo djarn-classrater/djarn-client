@@ -27,6 +27,7 @@ const COURSE = gql`
         date
         rate
         like
+        likes
         user {
           firstNameTH
           lastNameTH
@@ -54,6 +55,7 @@ const COURSE = gql`
         date
         rate
         like
+        likes
         user {
           firstNameTH
           lastNameTH

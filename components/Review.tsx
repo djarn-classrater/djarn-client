@@ -19,11 +19,20 @@ interface Props {
 const LikeContainer = styled.div`
   padding: 2rem;
   margin: -2rem;
+  display: flex;
+`
+
+const LikeCount = styled.p`
+  margin: 0;
+  margin-right: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: #747474;
 `
 
 const Like = styled(FontAwesomeIcon)<{ heart: boolean }>`
   flex: none;
-  margin: 0;
+  margin: auto;
   color: ${({ heart }) => (heart ? '#DE8686' : 'lightgray')};
 `
 
@@ -36,7 +45,7 @@ const Review = forwardRef<HTMLInputElement, Props>(
     data = { context: null, date: null, rate: 0 },
     onLikeClick,
   }) => {
-    const { context, date, rate } = data
+    const { context, date, rate, likes } = data
 
     return (
       <>
@@ -81,6 +90,7 @@ const Review = forwardRef<HTMLInputElement, Props>(
               <Skeleton circle width={'1rem'} height={'1rem'} />
             ) : (
               <LikeContainer onClick={() => onLikeClick && onLikeClick(data)}>
+                <LikeCount>{likes}</LikeCount>
                 <Like heart={heart} icon={faHeart} />
               </LikeContainer>
             )}
