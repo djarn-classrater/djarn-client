@@ -9,6 +9,29 @@ import { Rate } from '../components/Rate'
 import StarRate from '../components/StarRate'
 import { CourseType, UserType } from '~/generated/graphql'
 import ReviewList from '~/components/ReviewList'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import styled from 'styled-components'
+
+const TitleContainer = styled.div`
+  display: flex;
+  margin: 1rem 0.35rem 1rem 0rem;
+`
+
+const Title = styled.div`
+  margin: auto;
+  flex: 1;
+`
+
+const Clickable = styled.div`
+  margin: -1rem;
+  padding: 1rem;
+`
+
+const EditIcon = styled(FontAwesomeIcon)`
+  margin: auto;
+  flex: none;
+`
 
 const COURSE = gql`
   query getCourse($courseId: String!) {
@@ -88,7 +111,21 @@ const Course = () => {
       {!state.loading &&
         (me.reviews[0] ? (
           <>
-            <p>Your review</p>
+            <TitleContainer>
+              <Title>Your review</Title>
+              <Clickable
+                onClick={() => {
+                  router.push({
+                    pathname: '/reviews/edit',
+                    query: {
+                      courseId: router.query.courseId,
+                    },
+                  })
+                }}
+              >
+                <EditIcon icon={faEdit} color={'lightgray'} />
+              </Clickable>
+            </TitleContainer>
             <ReviewList {...state} {...me} />
             <hr
               style={{
