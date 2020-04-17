@@ -81,7 +81,7 @@ export const Chart: FunctionComponent<Props> = ({ loading, rating }) => {
       />
       <BarChart
         maxScore={maxScore}
-        score={rating && rating['_2']}
+        score={rating && rating['_1']}
         color={'#F09165'}
         loading={loading}
       />
