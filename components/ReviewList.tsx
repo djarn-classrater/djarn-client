@@ -67,7 +67,7 @@ const ReviewList: FunctionComponent<Props> = ({ loading, reviews }) => {
       {reviews.length !== 0 &&
         reviews.map((review, idx) => (
           <Review
-            onLikeClick={async ({ id, like }) => {
+            onLikeClick={async ({ id, like, likes }) => {
               if (!like) {
                 await createLike({
                   variables: { reviewId: id },
@@ -79,6 +79,7 @@ const ReviewList: FunctionComponent<Props> = ({ loading, reviews }) => {
                         __typename: 'ReviewType',
                         id: review.id,
                         like: true,
+                        likes: likes + 1,
                       },
                     })
                   },
@@ -94,6 +95,7 @@ const ReviewList: FunctionComponent<Props> = ({ loading, reviews }) => {
                         __typename: 'ReviewType',
                         id: review.id,
                         like: false,
+                        likes: likes - 1,
                       },
                     })
                   },
