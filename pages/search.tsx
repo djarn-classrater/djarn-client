@@ -6,13 +6,16 @@ import Search from '../components/Search'
 import { gql } from 'apollo-boost'
 import { useLazyQuery } from '@apollo/react-hooks'
 import { Query } from 'react-apollo'
-import { CourseType, UserType } from '~/generated/graphql'
+import { CourseType, UserType, CourseResponse } from '~/generated/graphql'
 
-const GET_COURSE = gql`
-  query getCourse($courseId: String!) {
-    course(courseId: $courseId) {
-      courseId
-      courseName
+const SEARCH_COURSE = gql`
+  query searchCourse($query: String!) {
+    search(query: $query, size: 5) {
+      _id
+      course {
+        courseId
+        courseName
+      }
     }
   }
 `
@@ -122,17 +125,17 @@ const Warning = () => {
   )
 }
 const SearchBar = () => {
-  const [getCourse, { loading, error, data }] = useLazyQuery<{
-    course: CourseType
-  }>(GET_COURSE)
+  const [searchCourse, { loading, data }] = useLazyQuery<{
+    search: CourseResponse[]
+  }>(SEARCH_COURSE)
   const [searchActive, setSearchActive] = useState<boolean>(false)
   return (
     <Layout>
       <Search
         onChange={event =>
-          getCourse({
+          searchCourse({
             variables: {
-              courseId: event.target.value,
+              query: event.target.value,
             },
           })
         }
@@ -150,12 +153,11 @@ const SearchBar = () => {
               <TextArea>
                 <Texts>loading...</Texts>
               </TextArea>
-            ) : error ? (
-              <TextArea>
-                <Texts>Not Found</Texts>
-              </TextArea>
             ) : (
-              data && <SearchResult {...data.course} />
+              data &&
+              data.search.map((courseRes, idx) => (
+                <SearchResult key={idx} {...courseRes.course} />
+              ))
             )}
             <Warning />
           </>
