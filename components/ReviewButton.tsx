@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 
-type Props = React.ButtonHTMLAttributes<HTMLButtonElement>
+type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & { title: string }
 
-export const CreateButton: FunctionComponent<Props> = ({ ...props }) => {
+export const CreateButton: FunctionComponent<Props> = ({ title, ...props }) => {
   return (
     <button
       {...props}
@@ -18,7 +18,7 @@ export const CreateButton: FunctionComponent<Props> = ({ ...props }) => {
         marginBottom: '1rem',
       }}
     >
-      Create a review
+      {title}
     </button>
   )
 }

@@ -4,7 +4,7 @@ import Error from 'next/error'
 import { format } from 'url'
 import WriteReviewArea from '~/components/WriteReviewArea'
 import CourseDetail from '~/components/CourseDetail'
-import CreatReviewButton from '~/components/CreateReviewButton'
+import ReviewButton from '~/components/ReviewButton'
 import Cancel from '~/components/Cancel'
 import StarRate, { Rate } from '~/components/StarRate'
 import Layout from '~/components/Layout'
@@ -72,7 +72,8 @@ const WriteReviewPage = () => {
         starSize="2.5rem"
       />
       <WriteReviewArea height={'18.25rem'} ref={textAreaRef} />
-      <CreatReviewButton
+      <ReviewButton
+        title={'Create review'}
         onClick={async () => {
           console.log({
             context: textAreaRef.current.value,

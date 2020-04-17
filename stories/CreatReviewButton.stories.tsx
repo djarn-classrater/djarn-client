@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CreatButton from '../components/CreateReviewButton'
+import CreatButton from '../components/ReviewButton'
 
 export default {
   component: CreatButton,
@@ -9,5 +9,5 @@ export default {
 }
 
 export const defaultCreatButton = () => {
-  return <CreatButton />
+  return <CreatButton title={'Test'} />
 }
