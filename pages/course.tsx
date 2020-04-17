@@ -121,6 +121,16 @@ const Course = () => {
           </>
         ))}
       <ReviewList {...state} reviews={reviews} />
+      {!state.loading && me.reviews.length === 0 && reviews.length === 0 && (
+        <p
+          style={{
+            color: 'rgb(116, 116, 116)',
+            textAlign: 'center',
+          }}
+        >
+          No review
+        </p>
+      )}
     </Layout>
   )
 }

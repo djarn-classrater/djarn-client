@@ -64,7 +64,7 @@ const ReviewList: FunctionComponent<Props> = ({ loading, reviews }) => {
     )
   return (
     <>
-      {reviews.length !== 0 ? (
+      {reviews.length !== 0 &&
         reviews.map((review, idx) => (
           <Review
             onLikeClick={async ({ id, like }) => {
@@ -109,17 +109,7 @@ const ReviewList: FunctionComponent<Props> = ({ loading, reviews }) => {
             heart={review.like}
             data={review}
           />
-        ))
-      ) : (
-        <p
-          style={{
-            color: 'rgb(116, 116, 116)',
-            textAlign: 'center',
-          }}
-        >
-          No review
-        </p>
-      )}
+        ))}
     </>
   )
 }
