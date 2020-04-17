@@ -125,7 +125,7 @@ const SearchBar = () => {
   const [getCourse, { loading, error, data }] = useLazyQuery<{
     course: CourseType
   }>(GET_COURSE)
-  const [searchActive, setSearchActive] = useState()
+  const [searchActive, setSearchActive] = useState<boolean>(false)
   return (
     <Layout>
       <Search
